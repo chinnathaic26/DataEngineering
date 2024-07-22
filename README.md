@@ -43,3 +43,6 @@ https://docs.oracle.com/cd/F32587_01/sqlrf/sql-language-reference.pdf
 
 
 
+
+
+

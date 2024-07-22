@@ -20,4 +20,9 @@ Different file formats such as AVRO, CSV, Delimiter files
 Teradata
 
 
+As part of my learning I used to learn mostly from free resources with good content.
+for Linux I prefered **https://www.lpi.org/** to gain more knowledge on Linux part which is utilized in my current data engineering project.
+Linux essentials, LPIC-1, LPIC-2 learning materials are good enough to kick start.
+
+
 

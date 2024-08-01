@@ -4,20 +4,38 @@ List of Commands :
 
 2. git --help or git -h
 
-3. git - C <path>  -- git - C <directory path>  commit -m "new commit changes"  - allows to run the git commands in different directory than the current directory
+3. git - C <path>  -- git - C <directory path>  commit -m "new commit changes"  ===> allows to run the git commands in different directory than the current directory
 
-4. git -c <name>=<value>  -- git -c <user.name>=<anupappu> commit -m " set new user name n run" - allows to set a configuration of command specified for single run alone, doesnt change global or local configuration.
+4. git -c <name>=<value>  -- git -c <user.name>=<anupappu> commit -m " set new user name n run" ===> allows to set a configuration of command specified for single run alone, doesnt change global or local configuration.
 
 5. export GIT_USER_EMAIL=john@example.com
-git --config-env=user.email=GIT_USER_EMAIL commit -m "Commit with environment-based user email"  - allows to set dynamically env variable in command 
+git --config-env=user.email=GIT_USER_EMAIL commit -m "Commit with environment-based user email"  ===> allows to set dynamically env variable in command 
 
-6. git --exec-path=/opt/git/bin pull   - allows to use the executable path having diff versions or core programs of git to run the command
+6. git --exec-path=/opt/git/bin pull   ===> allows to use the executable path having diff versions or core programs of git to run the command
 
-7. git --html-path: This command displays the path to the directory containing Git's HTML documentation files.
+7. git --html-path ===> This command displays the path to the directory containing Git's HTML documentation files.
 
-8.  git --man-path: This command will output the path to the directory where Git’s manual pages are installed.
+8.  git --man-path ===> This command will output the path to the directory where Git’s manual pages are installed.
 
-9. 
+9. git --info-path ===> this command will give info files documenting this version of git
+
+10. git -paginate ===> option that helps with viewing long outputs by paging through them.
+
+11. git --git-dir=/path/to/repo/.git <command> ===> option in Git is used to specify the location of the .git directory.
+
+12. --work-tree=<path>  ===> specifies the working directory for the repository. This is particularly useful when the working directory and the .git directory are in different locations.
+
+13. --namespace=<path>  ===> Namespaces are a feature in Git that allow you to organize and separate multiple repositories within a single Git directory. This is particularly useful for managing and isolating different projects or parts of a large project.
+
+14. bare ==> In Git, a "bare" repository is a repository that does not have a working directory. Instead, it only contains the version control information (the .git directory) and no checked-out copies of the files. 
+ 
+15. git add file1.txt file2.txt ===>  is used to add changes from the working directory to the staging area. This prepares changes for the next commit. 
+
+16. git am  ===> The git am command is used to apply patches from email messages or mailboxes.
+
+17. git -- archive ===> command is used to create an archive file of files from a Git repository.
+
+18. 
 
 
-
+  

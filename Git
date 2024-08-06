@@ -34,8 +34,19 @@ git --config-env=user.email=GIT_USER_EMAIL commit -m "Commit with environment-ba
 16. git am  ===> The git am command is used to apply patches from email messages or mailboxes.
 
 17. git -- archive ===> command is used to create an archive file of files from a Git repository.
+git archive --format=zip -o archive-name.zip HEAD ===> archive current branch
+git archive --format=tar --prefix=project-name/ -o archive-name.tar commit-or-branch-name  ===> create achive of a specific commit or branch
+git archive --format=zip -o master.zip master  ===> creating a zip archive of the master branch.
 
-18. 
+18. git -bisect  ===> tool to find the commit that shows a bug in commit history 
+git bisect start
+git bisect bad - specify bad commit
+git bisect good commit-hash - specify good commit.
+git bisect reset
+
+19.
+
+
 
 
   

@@ -40,6 +40,8 @@ https://academy.broadcom.com/learning-paths/automation/continuing-with-job-creat
 SQL:
 https://docs.oracle.com/cd/F32587_01/sqlrf/sql-language-reference.pdf
 
+Certifications : Microsoft Certified Azure Data fundamentals., AWS Certified Cloud Practitioner. AWS Certified Data Engineer Associate - In Progress.
+
 
 
 

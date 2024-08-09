@@ -44,9 +44,122 @@ git bisect bad - specify bad commit
 git bisect good commit-hash - specify good commit.
 git bisect reset
 
-19.
+19. git branch ===> git branch (list all branches)
+git branch <branch_name> ( create new branch )
+git branch -d <branch name> ( delete specified branch)
+git branch -D <branch name> ( force deletion )
+git branch -m <new branch name> ( rename a branch)
+git checkout <branch_name>  (to always switch to the branch where you want to create a new branch or make changes)
+
+20. git bundle ===>  used to create a single file that contains a repository or a subset of a repository, which can then be transferred to another location or system
+git bundle create <file.bundle> --all
+
+21.git checkout ===> used to switch between different branches or commit states in your repository. 
+git checkout -b <new_branch_name>
+
+22. git cherry-pick ===> allows you to apply the changes from specific commits onto your current branch. This is useful when you want to incorporate individual commits from one branch into another without merging the entire branch.
+git cherry-pick <commit_hash>
+
+23. git citool ===>  is a graphical interface for the git commit command. It provides a visual way to review and stage changes before making a commit. 
+
+24. git clean -f ===> remove untracked files in the working directory
+
+25. git clone <repo url> ===> clone a remote repo to local 
+
+26. git commit ===> used to record changes in the local repository.
+git commit -m "commit message "
+
+27. git describe ===> used to give a human-readable name to a commit.
+
+28.git diff ===> show changes in commit ,commits and working directory etc..
+
+29. git fetch ===>  is used to download commits, files, and references from a remote repository into your local repository.
+
+30. git gc ===> remove unnecessary files from local repo
+
+31.git grep ====> pattern match
+git grep "password" -- find all occurence of password in repo.
+git grep "fixme" -- src/  -- in source directory.
+git grep "bug" $(git rev-list --all) -- across all branches.
+
+32. git gui ===> graphical user interface to git
+
+33. git -init ===> create an empty git repo or reinitialize existing one
+
+34. git -log ===> show commit logs
+
+35. git merge ===> used to integrate changes from diff branches into current branch in git rep
+git merge <branch-name> - merge into currently checked out branch
+
+resolving conflicts - 1. identify conflicts
+resolve the conflicts
+after that stage the chages using git add
+complete the merge - git commit
+
+36.git -mv ===> to move or rename files and directories.
+
+staging the changes, 
+When you use git mv, Git automatically stages the move or rename operation. This means you don't need to run git add separately; the change is already prepared for the next commit.
+Committing the Changes
+After using git mv, you should commit the changes to finalize the move or rename in the repository:
+git commit -m "Renamed or moved file"
+
+37. git -notes ===> used to add, edit, display, or delete notes associated with commits in a Git repository. 
+
+git notes add -m "Your note here" <commit -hash>
 
 
+38. git pull ===> used to fetch and integrate changes from a remote repository into your current branch. It’s a combination of two commands: git fetch (which retrieves changes from the remote repository) and git merge (which integrates those changes into your local branch).
 
+  used to keep your local repo in sync with remote repo.
 
-  
+39. git push ===> upload local repo updates to remote repo.
+Make Changes and Commit:
+# Edit files
+git add .
+git commit -m "Implemented new feature"
+
+Push Changes to the Remote:
+git push origin main
+
+Push a New Branch:
+git checkout -b feature-branch
+git push origin feature-branch
+
+40. git range-diff ===> compare two commit ranges as it will help in easier to review and understand the evolution of code changes in git repo.
+git range-diff <commit1>..<commit2>
+
+41. git rebase ===> used to integrate changes from one branch into another by reapplying commits on top of another base commit.
+
+42. git reset ===> used to undo changes in a Git repository by resetting the current branch's state to a specified commit.
+If you want to undo the last commit but keep the changes staged:
+git reset --soft HEAD~1
+If you want to unstage changes but keep them in your working directory:
+git reset HEAD <file>
+To discard all changes and reset to a specific commit:
+git reset --hard <commit>
+
+43. git restore ===> restore working directory files or staging area changes to a specific state.
+
+To discard changes in a file and restore it to the last committed state:
+git restore <file>
+to unstage a file:
+git restore --staged <file>
+restore all files in the working directory to their last committed state.
+git restore .
+
+44. git revert ===> command is used to create a new commit that undoes the changes made by a previous commit. It is a safe way to undo changes because it does not alter the commit history; instead, it adds a new commit that reverses the effects of the specified commit. 
+
+revert the changes for specific commit.
+git revert abc1234
+
+45. git -rm  ===> used to remove files from the working directory and the staging area (index) in a Git repository.
+
+46. git short log ===> command summarizes commit messages in a concise format. 
+
+47. git show ===> The git show command is used to display detailed information about a specific commit, tag, or other Git objects.
+git show --pretty=short <commit>
+
+48. git sparse checkout ===> command is a feature in Git that allows you to manage and work with a subset of the files in a repository, rather than checking out the entire working directory
+
+49. git stash ===> command is used to temporarily save changes that are not yet committed. 

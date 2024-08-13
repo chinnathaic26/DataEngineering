@@ -163,3 +163,20 @@ git show --pretty=short <commit>
 48. git sparse checkout ===> command is a feature in Git that allows you to manage and work with a subset of the files in a repository, rather than checking out the entire working directory
 
 49. git stash ===> command is used to temporarily save changes that are not yet committed. 
+
+50. git status ===>  shows the working tree status
+
+51. git-submodule ===> way to include one git repo as sub directory to another repo
+
+52. git switch ===> to switch to an existing branch
+git switch -c <new branch name> to create a new branch and switch to it.
+
+53. git tag  ===> command in git is used to create ,list and manage tags in a repo.
+
+54. gitk ===> graphical history viewer for Git repos.
+
+55. scalar
+
+56.
+
+

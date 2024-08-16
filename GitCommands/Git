@@ -175,6 +175,82 @@ git switch -c <new branch name> to create a new branch and switch to it.
 
 54. gitk ===> graphical history viewer for Git repos.
 
-55. scalar
+55. scalar 
+managing large repos. partial cloning, spare checkout, backgorund maintenance,advanced config
+initialize scalr:
+scalar register <repo path>
+clone a repo:
+scalar clone <repo-url>
+unregister repo:
+scalar unregister <repo path>
 
-56.
+
+56. git config:
+set the config properties.
+example:
+git config --global user.name "your name"
+git config --global user.email "your email"
+
+57. git-fast-export: allows you to export the history of a Git repository into a fast-import stream, which is a format that can be used to transfer a repository's history and contents to another version control system or a different Git repository. 
+example : export a branch
+git fast-export master > master-export.dat
+use case:
+Migration: Moving a Git repository to another system or version control tool that supports git fast-import.
+Backup: Creating a backup of a Git repository's history that can be imported later.
+Filtering: Exporting only specific branches or parts of a repository for analysis or migration.
+Anonymization: Sharing a repository’s history without revealing the identities of contributors.
+
+58. git fast import:
+allows you to import a Git repository's history and content from a fast-import stream. This command is often used to create or populate a Git repository from data exported using git fast-export, or from data produced by other version control systems that can generate fast-import-compatible streams.
+example: git fast-import < ../repo-export.dat
+Use Cases
+Migrating Repositories: git fast-import is commonly used to migrate repositories from other version control systems (like Mercurial or SVN) to Git, using intermediate tools that convert their histories to the fast-import format.
+Large Repository Handling: For repositories with large histories or many branches, using git fast-import in conjunction with git fast-export allows efficient repository cloning, restructuring, or migration.
+Custom Import Tools: Developers can write scripts or tools that generate fast-import streams to automate the creation or modification of Git repositories.
+Repository Recovery: In some cases, if a repository is corrupted, using git fast-import with a valid fast-export backup can help restore the repository.
+
+59. git-mergetool:
+The git mergetool command is used in Git to assist in resolving merge conflicts by launching an external merge tool. When you encounter a merge conflict, Git pauses the merge process and allows you to manually resolve the conflicts. Using git mergetool makes this process easier by providing a graphical or textual interface to compare the conflicting changes and decide how to resolve them.
+before use git-mergetool command, set the preferred merge tool
+
+basic usage:
+git config --global merge.tool meld
+start the merge:
+git merge <branch-name>
+git mergetool
+git add <conflict resolved file>
+git commit
+
+60. git prune: The git prune command is used to clean up and remove objects that are no longer being referenced in a Git repository.
+
+git prune --dry-run
+git prune --expire=now
+
+61. git-reflog = command is a powerful tool in Git that allows you to view the history of changes made to the references (such as branches, HEAD, etc.) in your repository. This includes not only commits but also other actions like resets, checkouts, and merges. The reflog is particularly useful for recovering lost commits or tracking changes that are not part of the regular commit history, such as when you accidentally move your HEAD or reset a branch.
+example:
+git reflog show feature-branch
+
+62. git refs
+
+git show-ref
+Practical Examples
+Finding the Commit a Tag Points To:
+
+git show-ref --tags
+Checking Which Commit a Branch Points To:
+
+git show-ref refs/heads/feature-branch
+Force Pushing and Updating Remote Refs:
+
+git push origin <local-branch>:refs/heads/<remote-branch>
+Resetting a Branch to a Previous Commit:
+
+git update-ref refs/heads/master <commit-sha>
+
+
+
+
+
+
+
+

@@ -35,4 +35,14 @@ Search the locate database for files with a specific name.
 **find**
 Search the file system for names matching a set of selection criteria.
 **updatedb**
+**cd**
+Change the current directory.
+**pwd**
+Print the current working directory’s path
+**ls**
+List the contents of a directory and display properties of files
+**mkdir**
+Create a new directory
+**tree**
+Display a hierarchical listing of a directory tree
 Update the locate database.

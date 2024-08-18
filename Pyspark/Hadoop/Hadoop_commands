@@ -1,1 +1,11 @@
 
+1. hadoop dfs -ls/    ====> list the files.
+
+2. hadoop dfs -ls -d /hadoop   ====> list the details of hadoop folder.
+
+3. hadoop dfs -ls -h /data  ====> format file size in human readable format.
+
+4. hadoop dfs -ls -R /hadoop   ====> recursively list all files in hadoop directory and its subdirectories in hadoop directory.
+
+5. hadoop dfs -ls /hadoop/dat*  ====> list files in hadoop directory starting with dat.
+

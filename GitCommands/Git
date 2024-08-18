@@ -247,6 +247,27 @@ Resetting a Branch to a Previous Commit:
 
 git update-ref refs/heads/master <commit-sha>
 
+63. git remote ===> used to manage and interact with remote repositories in Git.
+
+list all remotes with their URL's
+git remote -v
+
+new remote:
+git remote add <name> <url>
+
+remove a remote:
+git remote remove <name>
+
+show detailed info about a remote:
+git remote show <name>
+
+64. git repack ===> used to optimize the storage of Git objects by repacking them into a more efficient format.
+
+pack all loose objects into a single pack file and remove loose objects:
+git repack 
+
+-d tells Git to delete any loose objects that are now unnecessary after the repack.
+
 
 
 

@@ -48,5 +48,5 @@ Display a hierarchical listing of a directory tree
 Update the locate database.
 
 
-Using Google Cloud shell to practice commands.
+Using Google Cloud shell to practice commands. Type History command
 https://console.cloud.google.com/welcome/new?cloudshell=true&project=voltaic-reducer-405406&supportedpurview=project

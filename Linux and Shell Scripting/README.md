@@ -45,7 +45,27 @@ List the contents of a directory and display properties of files
 Create a new directory
 **tree**
 Display a hierarchical listing of a directory tree
+**updatedb**
 Update the locate database.
+
+**-a (all)**
+prints all files/directories, including hidden
+**-d (directories)**
+list directories, not their contents
+**-h (human readable)**
+prints file sizes in human readable format
+**-l (long list)**
+provides extra details, one file/directory per line
+**-r (reverse)**
+reverses the order of a sort
+**-R (recursive)**
+lists every file, including files in each subdirectory
+**-S (size)**
+sorts by file size
+**-t (time)**
+sorts by modification time
+**-X (eXtension)**
+sorts by file extension
 
 
 Using Google Cloud shell to practice commands. Type History command

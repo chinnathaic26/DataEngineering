@@ -9,3 +9,20 @@
 
 5. hadoop dfs -ls /hadoop/dat*  ====> list files in hadoop directory starting with dat.
 
+
+Read and Write Files:
+
+1. hdfs dfs -text /hadoop/derby.log   ====> takes a source file and output the file in text format
+
+2. hdfs dfs -cat /hadoop/test  ====> output the content of the hdfs file on your stdout.
+
+3. hdfs dfs -appendToFile /ubuntu/text1  /home/hadoop/text2   ====> append the content of the text1 to text2.
+
+4. hdfs dfs -put /home/hadoop   ====> copies the file from local file system to HDFS.
+
+5. hdfs dfs -put -f  ====> if the file already exist then will overwrite the file.
+
+6. hdfs dfs -put ====> copies the ile from local to HDFS. allow datanode to lazily persist the file to disk.
+
+
+

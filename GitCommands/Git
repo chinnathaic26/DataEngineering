@@ -272,6 +272,26 @@ git repack
 
 git replace <original obj> <replace obj>
 
+66. git annotate - which is used to show who last modified each line of a file and when
+line by line history
+finding responsible changes.
+example: git annotate example.py
+
+67. git blame -  a powerful command for examining the history of a file at the line level. By showing who last modified each line, when it was modified, and in which commit, it provides valuable context for understanding and debugging code.
+
+debugging
+understanding Code
+Accountability
+
+git blame example.py
+
+68. git-bugreport -is not a built-in Git command, the concept of managing bug reports is often handled through external tools integrated with Git, such as issue trackers (like GitHub/GitLab Issues) or through custom Git hooks or documentation files within the repository.
+
+69. git count-objects
+command is used in Git to display the number of objects in the local repository and provide information about the size of those objects. This command is useful for understanding the current state of your Git repository, particularly in terms of storage and performance.
+checking repo size
+refore and after garbage collection
+performance issues.
 
 
 

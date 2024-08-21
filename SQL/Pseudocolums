@@ -1,1 +1,60 @@
+SEQUENCE:
+=========
+Step 1: Create a Sequence
+CREATE SEQUENCE seq_example
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE;
+
+USE SEQUENCE IN QUERY:
+1. SELECT seq_example.NEXTVAL AS pseudo_column, 
+       first_name, 
+       last_name
+FROM employees;
+
+2. SELECT seq_example.CURRVAL AS pseudo_column, 
+       first_name, 
+       last_name
+FROM employees;
+
+====================================================================================
+
+ROWNUM:
+======
+ROWNUM assigns a unique number to each row in the result set.
+
+SELECT ROWNUM AS pseudo_column, 
+       first_name, 
+       last_name
+FROM employees;
+======================================================================================
+ROWID :
+======
+ROWID provides a unique identifier for each row based on the physical storage location.
+SELECT ROWID AS pseudo_column, 
+       first_name, 
+       last_name
+FROM employees;
+======================================================================================
+EXPRESSIONS AS PSUEDOCOLUMN:
+===========================
+SELECT first_name || ' ' || last_name AS full_name, 
+       salary * 1.1 AS new_salary
+FROM employees;
+
+======================================================================================
+SYSDATE:
+========
+SYSDATE returns the current date and time.
+
+SELECT first_name, 
+       last_name, 
+       SYSDATE AS current_date
+FROM employees;
+
+
+
+
+
+
 

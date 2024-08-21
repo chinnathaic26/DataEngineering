@@ -1,0 +1,75 @@
++ -
+
+When these denote a positive or negative expression, they are unary operators.
+
+SELECT *
+  FROM order_items
+  WHERE quantity = -1
+  ORDER BY order_id, 
+    line_item_id, product_id;
+
+SELECT *
+  FROM employees
+  WHERE -salary < 0
+  ORDER BY employee_id;
++ -
+
+When they add or subtract, they are binary operators.
+
+SELECT hire_date 
+  FROM employees
+  WHERE SYSDATE - hire_date > 365
+  ORDER BY hire_date;
+* /
+
+Multiply, divide. These are binary operators.
+
+UPDATE employees
+  SET salary = salary * 1.1;
+
+Operator	Purpose	Example
+
+||
+
+Concatenates character strings and CLOB data.
+
+SELECT 'Name is ' || last_name
+  FROM employees
+  ORDER BY last_name;
+
+
+Operator	Returns
+UNION
+
+All distinct rows selected by either query
+
+UNION ALL
+
+All rows selected by either query, including duplicates
+
+INTERSECT
+
+All distinct rows selected by both queries
+
+INTERSECT ALL
+
+All rows selected by both queries including duplicates
+
+MINUS
+
+All distinct rows selected by the first query but not the second
+
+MINUS ALL
+
+All rows selected by the first query but not the second including duplicates
+
+EXCEPT
+
+All distinct rows selected by the first query but not the second
+
+EXCEPT ALL
+
+All rows selected by the first query but not the second including duplicates
+
+
+

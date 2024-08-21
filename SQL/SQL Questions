@@ -176,7 +176,16 @@ find emp with salaries greater than average salary:
 select * from emp where sal>(select avg(sal) from emp);
 
 36>
+window function to rank rows
 
+select first_name,sal ,rank() over(order by salary desc) as rank from emp;
+
+37>
+calculate running totals with window function
+
+select name,sal,sum(sal) over(order by sal) as running_total from emp;
+
+38>
 
 
 

@@ -1,1 +1,193 @@
 
+
+different elements to design your workload automation tasks:
+=============================================================
+Machines  = Machines are the Real or Virtual Machines on which the actual job runs 
+Jobs and Job Types = A Job is a basic building block for automated execution       
+Conditions = Conditions are dependencies for job execution   
+Calendars = Calendars are objects to schedule the job execution   
+
+
+4 basic elements for a Job:
+===========================
+Command Job
+File Watcher
+File Trigger
+Box
+
+
+Command Job: (Mandatory Attribute)
+============
+insert_job: Defines the name of the command job
+
+job_type: Defines the job type
+
+owner: Specifies the user ID of the operating system or application with appropriate rights. 
+If the owner is not specified, AutoSys considers the operating system user who invokes JIL to define a job as the owner for Job 
+
+machine: Specifies the machine name on which the workload automation agent is installed.
+
+command: Specifies the command along with the path. On job execution, the command runs in the specified path location.
+You can use the predefined variable with the full path defined in the file specified under profile attribute.
+
+(Optional Attribute)
+=====================
+
+box_name: Defines the parent box name for the job. <parent_box_name>
+
+profile: Specifies the Environment Profile file name that contains predefined variables. </path/file_name>
+
+std_out_file: Defines the Standard Out file path </path/file_name>. The output from command is stored in this file
+
+Standard Error file (std_err_file): Defines the error file path. The file stores the errors the command generates
+
+Example:
+insert_job: TEST.ECHO
+job_type: CMD
+owner: waadm
+machine: orasvr19
+command: echo “Hello World”
+
+
+File trigger job:
+
+Mandatory Attributes:
+insert_job: Defines the name of the file trigger job
+job_type: Defines the job type
+owner: Specifies the user ID of the operating system or application with appropriate rights. If the owner is not specified, AutoSys considers the operating system user who invokes JIL to define a job as the owner for Job
+machine: Specifies the machine name on which the workload automation agent is installed.
+watch_file: Specifies the file name along with the file path that the job needs to watch. File name may have wildcards like ‘*’ and ‘?’ for pattern matching. The file  path must be an absolute path or a pre-defined variable with file path.
+
+Optional Attributes:
+watch_file_type: Defines the file activity checks for the file.  On execution, job checks for the file activity type such as "EXISTS" for file existence in the specified path. If the file exists the job completes. If the file does not exist, the job fails.
+watch_file_change_type: Specifies the file size type. The job triggers when the job expands or shrinks based on the specified size type.    
+watch_file_change_value: Specifies the number of bytes or a percentage depending on the type of size change that you specified. The job triggers when the file expands to at least the specified size or amount, or shrinks by at least the specified amount or the specified size or less.
+watch_no_change: Defines the number of minutes the file must remain unchanged to satisfy the monitor condition.
+
+Example: Monitor for File Existence
+===================================
+The job monitors for the existence of the payrol.input file in the PAYROL folder. If the file exists in the directory, the job completes. If the file does not exist in the folder, the job fails.
+
+ 
+
+insert_job: ft_job
+
+job_type: FT
+
+owner: julian
+
+machine: unixagt
+
+watch_file: /PAYROL/payrol.input
+
+watch_file_type: EXIST
+
+
+Example: Monitor the Creation and Stability of a File
+=====================================================
+The job monitors for the creation of a file named monthly.log and  completes when the file has not changed for consecutive (watch_no_change) polling intervals.
+
+ 
+
+insert_job: ft_job
+
+job_type: FT
+
+owner: julian
+
+machine: ftagt
+
+watch_file: "c:\data\monthly.log"
+
+watch_file_type: GENERATE
+
+watch_no_change: 2
+
+
+File Watcher job:
+=================
+Madatory Attributes:
+
+insert_job: Defines the name of the file watcher job
+job_type: Defines the job type
+owner: Specifies the user ID of the operating system or application with appropriate rights. If the owner is not specified, AutoSys considers the operating system user who invokes JIL to define a job as the owner for Job
+machine: Specifies the machine name on which the workload automation agent is installed.
+watch_file: Specifies the file name along with the file path that the job needs to watch. File name may have wildcards like ‘*’ and ‘?’ for pattern matching. The file  path must be an absolute path or a pre-defined variable with file path.
+
+Optional Attributes:
+watch_file_min_size: Specifies the minimum file size for the job to monitor. The default size to monitor is 0 (zero). If you do not specify the size job completes if the file exists.
+watch_interval: Specifies the interval at which the stability of the file is monitored. For instance, once the file condition is satisfied, the job monitors to check if the file remains steady for the duration specified in the watch_interval attribute. 
+
+Example: Monitor a File Every 120 Seconds
+==============================================
+insert_job: fw_job
+
+job_type: FW
+
+owner: julian
+
+machine: winagent
+
+watch_file: “c:\tmp\watch_file.log”
+
+watch_file_min_size: 10000
+
+watch_interval: 90
+
+
+Calendar
+============
+Calendars are used to schedule the job execution on specific days. Using Calendars, you can: 
+
+Run the jobs on specific days
+Exclude certain dates like holidays from job’s schedule run
+Generate a job schedule based on a set of complex criteria
+
+AutoSys supports the following three calendar types:
+
+Standard: A set of user-specified date and time.
+Extended: Dynamic calendar that is generated automatically based on a combination of holiday calendars, cycles, and defined job conditions
+Cycle: A set of date range used as an input to an extended calendar
+
+JOB STATUS:
+SUCCESS (s): Indicates that the Job execution successfully completed and exited with the specified success code in the job definition. 
+FAILURE (f): Indicates that the Job execution failed and exited with the specified failure code in the job definition. You can set “alarm_if_fail” attribute as ‘Y’ to raise an alarm when the job fails.
+TERMINATED (t): Indicates that the Job ended abruptly while in a RUNNING state. You can set an alarm when the job is terminated.
+DONE (d): Indicates that the status condition for the job is SUCCESS, FAILURE, TERMINATED, ON_ICE or bypassed execution of a NOEXEC job.
+NOTRUNNING (n): Indicates that the status condition for a job is anything except STARTING, RUNNING, WAIT_REPLY, RESTART, or SUSPENDED.
+
+
+Job definitions specify the tasks that the individual jobs must perform.
+=========================================================================
+Each job definition is built using attributes. The attributes determine the job's properties and behavior.
+An attribute can be a job name, condition and so on. 
+You can create, update, and delete jobs definitions.
+
+
+Job Information Language (JIL): A scripting language that is unique to AutoSys enables you to create and manage jobs from the command line interface.
+
+You can create job definitions using a JIL script:
+Create a JIL script by entering JIL subcommands and attribute statements in a text file and then redirect the JIL script to the JIL command. 
+The JIL command activates the language processor, interprets the script, and loads it in to the database.
+
+
+Object Naming Conventions:
+==========================
+Object names must be unique per instance of AutoSys and follow certain naming conventions. This will help us to locate, monitor and manage the objects seamlessly.  
+
+Standardized Batch Errors and  return codes:
+============================================
+AutoSys interprets the job success or failure based on exit codes. Ensure an exit code check is done after every significant task in the job to get the right perspective of job execution results. 
+
+Local FIle Locations:
+=====================
+AutoSys job logs (standard out, standard error) must write to the same locations. Ensure the log file name contains the job name and the date stamp.
+
+An object name can be up to 64 characters long and may comprise the following characters:  a-z, A-Z, 0-9, period (.), underscore (_), hyphen (-), and pound (#).     
+Does not support embedded spaces or tabs in object names.
+
+
+
+
+
+

@@ -187,7 +187,46 @@ An object name can be up to 64 characters long and may comprise the following ch
 Does not support embedded spaces or tabs in object names.
 
 
+insert_job: TEST.ECHO.UNX.CD
+job_type: CMD
+owner: waadm
+machine: orasvr19
+command: echo “Simple Job Creation”
+std_out_file: /tmp/$AUTO_JOB_NAME.out
+std_err_file: /tmp/$AUTO_JOB_NAME.err
 
+The $AUTO_JOB_NAME is an AutoSys system variable for Unix holding the job name. 
+In the above job definition, Its been used the variable to define the path and file name to redirect the standard out and standard error. 
 
+===================
+You can start a job from CLI after creating the job definition. To start a job from CLI, you use the 'sendevent' command.
+====================
+Syntax:  sendevent -E STARTJOB -J <jobName>           
+
+Where,
+
+'-E' is used to send an event. In this case STARTJOB is the event.
+'-J' is used to specify the jobname that needs to be started. 
+If the start conditions of the job are met the job execution starts.
+=====================
+You can check the run status of a job using the 'autorep' command in CLI.
+======================
+Syntax: autorep -J <JobName> 
+
+where, '-J' is for a jobname to be reported on
+
+On executing the autorep command, the output report shows the Job Name (column 1), Last Start time, Last End time, Last Status (Column 4), Run Number and the Exit code(column 6).
+
+=======================
+You can view the job’s report from CLI using the 'autosyslog' command.
+=======================
+Syntax: autosyslog -J <jobName> -T O
+
+where,
+
+'-J' is used to specify the jobname to be reported
+'-T' is used to specify the type of log file
+O is used to shows the standard output file for the job
+The output shows the job report based on logs stored in the standard output file of the job.
 
 

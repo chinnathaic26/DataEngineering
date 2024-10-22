@@ -1,1 +1,21 @@
 
+Hive used to query the data stored in Hadoop -HDFS
+It also termed as Datawarehousing framework for Hadoop.
+
+beeline - shell client
+-e to run the query in double quotes
+-f to run the script with a file
+
+
+
+
+
+
+
+
+
+
+
+
+
+

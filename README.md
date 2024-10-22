@@ -4,23 +4,21 @@ Hi :) I am chinnathai
 
 I am passionate Data Engineer Learner.
 
-I am currently working on Data Engineering Project - as ETL Test Engineer of validation data pipelines 
-I am currently self Learning Big Data through my project developement side role from my developers who guide me to switch to Data Engineer role.
+I am currently working on Data Engineering Project - as ETL Big Data Test Engineer of validation data pipelines 
+I Self Learnt Big Data through my project developement side role from developers now looking for Data Engineer role.
 
 Languages and Tools:
 
 Linux Commands
 Shell Scripting
 Python
-Austosys Jobs
+Autosys Jobs
 Kafka Topics
 Oracle SQL
-MongoDB
 AWS
 CICD Pipeline
 ETL Test Validations
 Different file formats such as AVRO, CSV, Delimiter files
-Teradata
 Jira
 Putty
 Hadoop 

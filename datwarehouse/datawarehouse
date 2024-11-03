@@ -1,1 +1,47 @@
 
+most important assets of any organization is its information.
+in two forms: the operational systems of record and the data warehouse.
+the operational systems are where the data is put in, and the data warehouse is where we get the data out.
+
+The data warehouse must make an organization’s information easily accessible.
+The data warehouse must present the organization’s information consistently.
+The data warehouse must be adaptive and resilient to change. 
+The data warehouse must be a secure bastion that protects our information assets. 
+The data warehouse must serve as the foundation for improved decision making.
+The business community must accept the data warehouse if it is to be deemed successful. 
+
+4 main components of DWH:
+operational source systems
+Data Staging Area
+Data Presentation Area
+Data access tools
+
+Extracting is the first step process in getting data into datawarehouse.
+Tranforming
+Loading data into datawarehouse
+
+The key difference between 3NF and dimension models is the degree of normalization.
+Data in the queryable presentation area of the data warehouse must be dimensional, must be atomic, and must adhere to the data warehouse bus architecture.
+
+Metadata - data about data.
+Operation Data Store - ODSs are frequently updated, somewhat integrated copies of operational data.
+Fact Table - Numerical Performance measurements of buisness are stored.
+A row in a fact table corresponds to a measurement. A measurement is a row in a
+fact table. All the measurements in a fact table must be at the same grain. 
+
+The most useful facts in a fact table are numeric and additive. 
+The fact table itself generally has its own primary key made up of a subset of the foreign keys. This key is often called a composite or concatenated key.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

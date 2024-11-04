@@ -32,9 +32,17 @@ fact table. All the measurements in a fact table must be at the same grain.
 The most useful facts in a fact table are numeric and additive. 
 The fact table itself generally has its own primary key made up of a subset of the foreign keys. This key is often called a composite or concatenated key.
 
+A data warehouse almost always demands data expressed at the lowest possible
+grain of each dimension not because queries want to see individual low-level rows,
+but because queries need to cut through the details in very precise ways.
 
+Data warehouses always need an explicit date dimension table. There are many
+date attributes not supported by the SQL date function, including fiscal periods,
+seasons, holidays, and weekends. Rather than attempting to determine these nonstandard calendar calculations in a query, we should look them up in a date dimension table.
 
-
+Additive Fact
+Semi Additive Fact
+Nonadditive Fact --- example Unit Price
 
 
 

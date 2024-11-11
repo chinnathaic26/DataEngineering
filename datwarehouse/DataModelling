@@ -235,3 +235,183 @@ Data Storage:
 Storing data for supertypes and subtypes might require additional storage or introduce inefficiencies, especially if the relationships are not optimized.
 Conclusion
 Using subtypes and supertypes is an effective way to model hierarchical relationships in a database where different entities share common attributes but also have their own unique characteristics. Understanding when and how to apply these concepts helps improve data structure, eliminate redundancy, and enhance data integrity.
+
+
+In relational database design, different types of keys are used to identify records in a table and establish relationships between tables. Each type of key has a specific role in ensuring data integrity and providing efficient data access. Below is a breakdown of the various types of keys and their differences:
+
+1. Primary Key (PK)
+Definition: A Primary Key uniquely identifies each record in a database table. It must contain unique values, and no field in a primary key can be NULL.
+
+Purpose: Ensures that every row in a table is identifiable and uniquely distinguishable.
+
+Example: In a Customer table, CustomerID might be the primary key, as each customer has a unique ID.
+
+Attributes:
+
+Unique values
+Cannot be NULL
+One per table
+Example in a Table:
+
+text
+Copy code
+CustomerID (PK) | Name       | Email
+----------------|------------|-------------
+1               | Alice      | alice@example.com
+2               | Bob        | bob@example.com
+2. Foreign Key (FK)
+Definition: A Foreign Key is an attribute (or set of attributes) in one table that refers to the Primary Key in another table. It establishes a relationship between the two tables.
+
+Purpose: Ensures referential integrity by ensuring that a record in one table corresponds to a valid record in another table.
+
+Example: In an Order table, the CustomerID might be a foreign key that references the CustomerID in the Customer table.
+
+Attributes:
+
+Can be NULL (in some cases)
+Can refer to a Primary Key or Unique Key in another table
+One or more per table
+Example in a Table:
+
+text
+Copy code
+OrderID | CustomerID (FK) | OrderDate
+--------|-----------------|-----------
+101     | 1               | 2024-11-01
+102     | 2               | 2024-11-05
+3. Candidate Key
+Definition: A Candidate Key is any column (or set of columns) that could uniquely identify a record in a table. A table can have multiple candidate keys.
+
+Purpose: To identify all possible keys that could serve as the primary key.
+
+Example: In a Student table, both StudentID and Email could serve as candidate keys if they uniquely identify a student.
+
+Attributes:
+
+Uniquely identifies rows
+May be NULL (in some cases)
+Can be a single column or a combination of columns
+A table may have multiple candidate keys
+Example in a Table:
+
+text
+Copy code
+StudentID (Candidate Key) | Email (Candidate Key) | Name
+--------------------------|-----------------------|-----
+1001                      | student1@example.com  | Alice
+1002                      | student2@example.com  | Bob
+4. Unique Key (UK)
+Definition: A Unique Key ensures that all values in a column or a set of columns are unique across the table. Unlike the primary key, a unique key can accept a NULL value, but the non-null values must be unique.
+
+Purpose: Guarantees uniqueness but allows for NULLs, which a primary key does not allow.
+
+Example: In a User table, the Username field could be a unique key, ensuring no two users have the same username.
+
+Attributes:
+
+Uniquely identifies rows, but allows NULLs
+One or more unique constraints per table
+Can allow NULL values
+Example in a Table:
+
+text
+Copy code
+UserID (PK) | Username (UK) | Email
+------------|---------------|-------------
+1           | alice123      | alice@example.com
+2           | bob456        | bob@example.com
+5. Composite Key
+Definition: A Composite Key is a key that consists of two or more columns that together uniquely identify a record. Each column in the composite key can hold duplicate values, but the combination of all columns must be unique.
+
+Purpose: Used when a single column is not sufficient to uniquely identify records, and a combination of multiple columns is necessary.
+
+Example: In a Course Enrollment table, the combination of StudentID and CourseID might be used as a composite key to uniquely identify each record.
+
+Attributes:
+
+Combines two or more columns
+Ensures uniqueness based on the combination
+Useful for many-to-many relationships
+Example in a Table:
+
+text
+Copy code
+StudentID | CourseID | EnrollmentDate
+--------- | -------- | --------------
+1001      | 2001     | 2024-09-01
+1002      | 2001     | 2024-09-02
+6. Alternate Key
+Definition: An Alternate Key is any candidate key that was not chosen to be the Primary Key. In other words, it is a secondary key that can still uniquely identify records in a table.
+
+Purpose: To represent all candidate keys that are not currently used as the primary key.
+
+Example: In the Student table, if StudentID is chosen as the primary key, then Email would be the alternate key.
+
+Attributes:
+
+Can be used to uniquely identify a row
+Not the primary key but can be used in queries
+Example in a Table:
+
+text
+Copy code
+StudentID (PK) | Email (Alternate Key) | Name
+---------------|-----------------------|-----
+1001           | student1@example.com  | Alice
+1002           | student2@example.com  | Bob
+7. Superkey
+Definition: A Superkey is a set of one or more columns that can uniquely identify a record in a table. It may contain extra attributes that are not necessary for uniqueness.
+
+Purpose: Includes all candidate keys and any other sets of columns that can uniquely identify a record, even if they contain unnecessary columns.
+
+Example: If StudentID is a candidate key for a Student table, then {StudentID, Email} would also be a superkey, even though Email is unnecessary for uniqueness.
+
+Attributes:
+
+Contains the primary key and any other attributes that uniquely identify records
+May include extra columns beyond what is necessary for uniqueness
+Example in a Table:
+
+text
+Copy code
+Superkey: {StudentID, Email}
+Candidate Key: {StudentID}
+8. Natural Key
+Definition: A Natural Key is a key that is derived from the real-world attributes of an entity. It is typically a value that naturally exists in the world and is used to identify records (e.g., Social Security Number, Email).
+
+Purpose: Uses actual business data for unique identification, as opposed to artificially created keys like surrogate keys.
+
+Example: A NationalID could serve as a natural key for a person.
+
+Attributes:
+
+Derived from real-world data
+Often used when a natural unique identifier exists
+Example in a Table:
+
+text
+Copy code
+NationalID (PK) | Name       | Address
+----------------|------------|-------------
+123-45-6789     | Alice      | 123 Main St
+987-65-4321     | Bob        | 456 Elm St
+9. Surrogate Key
+Definition: A Surrogate Key is an artificially generated key that has no intrinsic meaning in the real world. It is usually created by the database system as an auto-incrementing number (e.g., AutoID).
+
+Purpose: Used when no natural key exists, or to simplify the data model by providing a stable, non-changing identifier.
+
+Example: A CustomerID that is automatically generated by the database when a new customer is added to the table.
+
+Attributes:
+
+System-generated (e.g., auto-increment or UUID)
+No business meaning
+Common in practice for primary keys
+Example in a Table:
+
+text
+Copy code
+CustomerID (PK) | Name       | Email
+----------------|------------|-------------
+1               | Alice      | alice@example.com
+2               | Bob        | bob@example.com

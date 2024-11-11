@@ -1,1 +1,237 @@
 
+1...... the database is specified by a data model, describing what sort of data will be held and how it will be organized.
+2...... Professional data modelers therefore work closely with business stakeholders, including the prospective users of the information system, in much
+the same way that architects work with the owners and prospective inhabitants of the buildings they are designing.
+3...... the data model is the single most important component of an information systems design.
+
+Why datamodel is important?
+...... Leverage - First, a well-designed data model can make programming simpler and
+cheaper. Even a small change to the model may lead to significant savings
+in total programming cost.
+....... Concise
+....... Data Quality Inaccurate data (poor data quality) reduces the value
+of the asset and can be expensive or impossible to correct.
+
+What Makes a Good Data Model?
+.........Completeness - Does the model support all the necessary data? 
+.........Nonredundancy - Does the model specify a database in which the same fact could be
+recorded more than once? 
+..........Enforcement of Business Rule - How accurately does the model reflect and enforce the rules that apply to
+the business’ data? 
+..........Reusability - Will the data stored in the database be reuseable for purposes beyond
+those anticipated in the process model?
+----------Stability and Flexibility -How well will the model cope with possible changes to the business
+requirements? 
+..........Elegance - Does the data model provide a reasonably neat and simple classification of
+the data? 
+.........Communication - How effective is the model in supporting communication among the various stakeholders in the design of a system?
+---------Integration - How will the proposed database fit with the organization’s existing and
+future databases?
+
+
+Conceptual Data Model ------------  usually presented as a diagram with supporting documentation.
+logical data model  ------------- is a translation of the conceptual model into structures
+that can be implemented using a database management system (DBMS).
+The physical data model ----------incorporates any changes
+necessary to achieve adequate performance and is also presented in terms of
+tables and columns, together with a specification of physical storage (which
+may include data distribution) and access mechanisms.
+
+
+The Three-Schema Architecture------------ is a framework designed to organize and separate the different perspectives of a database system, allowing for abstraction between the physical storage of data, the conceptual structure of data, and the external views of data by users. This architecture was proposed to manage complexity, enhance data independence, and improve interoperability. It consists of three levels:
+
+Internal Schema (Physical Level):
+
+This is the lowest level, closest to the physical storage.
+It describes how data is actually stored in the database, including the structures, indexing, and file organization.
+This level hides the complexities of data storage, such as hardware and database engine details, from the upper levels.
+Conceptual Schema (Logical Level):
+
+This is the middle level, representing the logical structure of the entire database.
+It defines the database in terms of entities, relationships, and constraints, independent of any particular view or physical storage considerations.
+This level focuses on defining what data is stored and the relationships among the data.
+External Schema (View Level):
+
+This is the highest level, presenting customized views of the database to different users based on their needs.
+It describes how individual users or groups see the data, often hiding some details of the conceptual schema and thus ensuring data security and personalized interfaces.
+This level allows for different "views" of the same data, tailored for different user requirements.
+Advantages of the Three-Schema Architecture
+Data Independence: It separates the physical storage and conceptual structure from the user's view, enhancing both logical and physical data independence.
+Simplification of Database Management: This separation allows easier modification of schema levels without affecting others, which can simplify tasks like database maintenance, scaling, and troubleshooting.
+Data Security and Access Control: The external schema allows restriction of access to certain data based on user roles and requirements, promoting data security.
+In essence, this architecture is foundational to modern database management systems (DBMS) and provides a structured approach to managing complex data systems while ensuring flexibility and security.
+
+
+
+2 different types of diagrams:
+ER diagram and UML -class diagram
+
+normalization, ----------------- a set of rules for allocating data to tables in such a way as to eliminate certain types of redundancy and incompleteness.
+unormalization/denormalization - reduce complex struture and improve the data retireval preformance.
+
+
+
+ Cardinality and Optionality :
+Cardinality Type	Description	Example
+One-to-One (1:1)	Each instance of Entity A is associated with exactly one instance of Entity B.	One person has one passport.
+One-to-Many (1
+)	Each instance of Entity A can be associated with many instances of Entity B.	One department has many employees.
+Many-to-Many (M
+)	Many instances of Entity A can be associated with many instances of Entity B.	Many students can enroll in many courses.
+Zero-to-One (0:1)	Each instance of Entity A may be associated with zero or one instance of Entity B.	A person may or may not own a car.
+Summary of Optionality Types:
+Optionality	Description	Example
+Mandatory	The relationship requires an instance of Entity B for each instance of Entity A.	An order must have at least one product.
+Optional	The relationship is optional, and Entity A can exist without Entity B.	A student may or may not have a scholarship.
+
+
+Subtypes and Supertypes in Database Design
+In database design, the concepts of subtypes and supertypes are used to model inheritance-like relationships between entities, often in the context of generalization and specialization. This approach is typically employed when you have a set of entities that share some common attributes but also have their own specific attributes. By modeling this relationship correctly, you can reduce data redundancy and better capture the real-world relationships between entities.
+
+Supertype
+A supertype is a generic or parent entity that contains attributes shared by one or more subtypes.
+A supertype defines common characteristics and behaviors that are inherited by its subtypes.
+Subtype
+A subtype is a more specialized version of a supertype.
+A subtype inherits all the attributes of the supertype and may also have additional, specific attributes that distinguish it from other subtypes.
+Example: Vehicle as a Supertype
+Let's consider an example involving different types of vehicles. The concept of vehicles can be generalized as a supertype, and specific types of vehicles (e.g., Car, Truck, Motorcycle) can be defined as subtypes.
+
+Supertype: Vehicle
+Attributes:
+VehicleID (Primary Key)
+Make
+Model
+Year
+Color
+Subtypes:
+Car
+
+Additional Attributes:
+Number of Doors
+Trunk Size
+Truck
+
+Additional Attributes:
+Payload Capacity
+Towing Capacity
+Motorcycle
+
+Additional Attributes:
+Engine Type
+Number of Wheels
+ER Diagram Representation of Subtypes and Supertypes
+In an Entity-Relationship (ER) diagram, supertypes and subtypes are typically represented with a triangle to denote the relationship.
+
+The supertype is represented as a rectangle (standard entity) that contains the shared attributes.
+The subtypes are connected to the supertype using a triangle, and each subtype will have its own specific attributes.
+Here's an example ER diagram representation:
+
+sql
+Copy code
+             +------------+
+             |  Vehicle   |
+             +------------+
+             | VehicleID  |
+             | Make       |
+             | Model      |
+             | Year       |
+             | Color      |
+             +------------+
+                /  |  \
+               /   |   \
+              /    |    \
+   +--------+    +--------+    +------------+
+   |   Car  |    |  Truck |    | Motorcycle |
+   +--------+    +--------+    +------------+
+   | Doors  |    | Payload |    | EngineType |
+   | Trunk  |    | Towing  |    | Wheels     |
+   +--------+    +--------+    +------------+
+In this diagram:
+
+Vehicle is the supertype.
+Car, Truck, and Motorcycle are the subtypes.
+Each subtype inherits common attributes (e.g., VehicleID, Make, Model, etc.) from the Vehicle supertype but has additional specific attributes.
+Generalization and Specialization
+The concepts of subtypes and supertypes are part of two important processes:
+
+Generalization:
+
+This is the process of identifying common attributes from different entities and abstracting them into a higher-level entity (supertype).
+Example: From Car, Truck, and Motorcycle, we create a supertype Vehicle.
+Specialization:
+
+This is the process of dividing a higher-level entity into multiple specialized entities (subtypes).
+Example: We start with a general Vehicle entity and specialize it into Car, Truck, and Motorcycle.
+Types of Relationships Between Supertypes and Subtypes
+Disjoint (Exclusive) Subtypes:
+
+In this type of relationship, an instance of the supertype can belong to only one of the subtypes.
+
+Example: A person can be either a Student or a Teacher, but not both.
+
+This is often denoted by a "d" or a single line in ER diagrams.
+
+Overlapping Subtypes:
+
+In this type of relationship, an instance of the supertype can belong to multiple subtypes.
+
+Example: A person could be both a Student and an Employee.
+
+This is denoted by an "o" or double lines in ER diagrams.
+
+Total Specialization:
+
+In this case, every instance of the supertype must belong to one of its subtypes.
+Example: Every vehicle is either a car, truck, or motorcycle (no other type is allowed).
+Partial Specialization:
+
+Here, an instance of the supertype may or may not belong to a subtype.
+Example: Not every person is a student or employee; some may not belong to either subtype.
+Example: Database Schema for Subtypes and Supertypes
+Let’s consider an example of Employee as a supertype, with Manager and Technician as subtypes.
+
+Supertype: Employee
+Attributes:
+EmployeeID (Primary Key)
+Name
+Address
+DateOfBirth
+Subtypes:
+Manager
+
+Additional Attributes:
+Department
+Number of Reports
+Technician
+
+Additional Attributes:
+Certification
+Skillset
+In this case, Employee is the supertype, and it contains common attributes for all employees. Manager and Technician are subtypes, and each has specific attributes that distinguish them from each other.
+
+Advantages of Using Subtypes and Supertypes
+Avoiding Redundancy:
+
+Common attributes are stored once in the supertype, and subtypes store only their specialized attributes, reducing redundancy.
+Simplifying Data Modeling:
+
+It’s easier to model complex relationships with subtypes and supertypes, especially when dealing with hierarchies or categories.
+Better Data Integrity:
+
+Enforcing constraints and rules (e.g., referential integrity) becomes simpler when using well-defined supertypes and subtypes.
+Flexibility for Future Growth:
+
+New subtypes can be added later without changing the overall structure of the database, allowing for easier expansion.
+Disadvantages of Subtypes and Supertypes
+Complexity:
+
+Implementing subtypes and supertypes adds complexity to the database schema, which may require additional management, especially when querying across multiple levels.
+Inheritance Challenges:
+
+In some cases, inheritance in databases may lead to complications when querying or updating the data, as attributes from multiple levels must be considered.
+Data Storage:
+
+Storing data for supertypes and subtypes might require additional storage or introduce inefficiencies, especially if the relationships are not optimized.
+Conclusion
+Using subtypes and supertypes is an effective way to model hierarchical relationships in a database where different entities share common attributes but also have their own unique characteristics. Understanding when and how to apply these concepts helps improve data structure, eliminate redundancy, and enhance data integrity.

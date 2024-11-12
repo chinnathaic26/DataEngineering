@@ -42,14 +42,15 @@ date attributes not supported by the SQL date function, including fiscal periods
 seasons, holidays, and weekends. Rather than attempting to determine these nonstandard calendar calculations in a query, we should look them up in a date dimension table.
 
 Additive Fact
-Semi Additive Fact
-Nonadditive Fact --- example Unit Price
+Semi Additive Fact 
+Nonadditive Fact --- example Unit Price,ratio
 
 Dimension tables are integral companions to a fact table. The dimension tables contain the textual context associated with a business process measurement event. They
 describe the “who, what, where, when, how, and why” associated with the event.
 
 
-
+Conformed Facts - If the same measurement appears in separate fact tables. 
+Transaction fact tables, capture every individual transaction as it occurs, making them ideal for detailed, event-based analysis.
 
 
 

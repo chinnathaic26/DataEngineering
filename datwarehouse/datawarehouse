@@ -1,6 +1,7 @@
 
 most important assets of any organization is its information.
-in two forms: the operational systems of record and the data warehouse.
+in two forms: the operational systems of record and the data warehouse. 
+This asset is almost always used for two purposes: operational record keeping and analytical decision making.
 the operational systems are where the data is put in, and the data warehouse is where we get the data out.
 
 The data warehouse must make an organization’s information easily accessible.
@@ -44,6 +45,8 @@ Additive Fact
 Semi Additive Fact
 Nonadditive Fact --- example Unit Price
 
+Dimension tables are integral companions to a fact table. The dimension tables contain the textual context associated with a business process measurement event. They
+describe the “who, what, where, when, how, and why” associated with the event.
 
 
 

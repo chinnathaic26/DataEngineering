@@ -51,7 +51,24 @@ describe the “who, what, where, when, how, and why” associated with the even
 
 Conformed Facts - If the same measurement appears in separate fact tables. 
 Transaction fact tables, capture every individual transaction as it occurs, making them ideal for detailed, event-based analysis.
+Periodic snapshot table :A row in a periodic snapshot fact table summarizes many measurement events occurring over a standard period, such as a day, a week, or a month. The grain is the
+period, not the individual transaction. 
+An accumulating snapshot fact table is used in a data warehouse to track the lifecycle of a business process where updates occur over time. Each row represents a specific entity or process instance and is updated as the process progresses through its lifecycle stages.
+Example: Order Fulfillment Process
+Factless fact tables are a special type of fact table in a data warehouse that do not have measurable numeric facts. Instead, they capture the occurrence of events or the existence of relationships.
+Types of Factless Fact Tables
+Event Tracking
+Captures the occurrence of specific events. Student Attendance
+Coverage
+Captures relationships between dimensions without associated metrics. Product Promotion
 
+An aggregate fact table is a type of fact table in a data warehouse that stores summarized or aggregated data, typically pre-calculated to improve query performance. 
+These tables reduce the granularity of the data, consolidating multiple rows from a detailed fact table into fewer rows.
+
+A degenerate dimension (DD) is a dimension in a data warehouse that does not have its own dimension table. Instead, its values are stored in the fact table itself. 
+
+Transaction Tracking: Helps trace specific events or records without the need for additional joins.
+Example Query: Retrieve all products sold in Transaction T12345.
 
 
 

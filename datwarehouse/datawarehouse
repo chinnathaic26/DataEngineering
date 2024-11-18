@@ -70,6 +70,70 @@ A degenerate dimension (DD) is a dimension in a data warehouse that does not hav
 Transaction Tracking: Helps trace specific events or records without the need for additional joins.
 Example Query: Retrieve all products sold in Transaction T12345.
 
+A denormalized flattened dimension refers to a structure in data modeling or database design where hierarchical or normalized relationships in a dataset are "flattened" into a single table or dimension, eliminating joins and enabling faster querying for certain types of analysis.
+
+In a normalized schema:
+
+A Customer table might store customer details (name, region).
+A Sales table might store transactions linked by a CustomerID.
+In a flattened dimension:
+
+These tables would be merged, and each row in the Sales table would include customer details, like:
+SalesID	CustomerID	CustomerName	Region	SalesAmount
+1	101	Alice	North	500
+2	102	Bob	South	300
+
+Null attributes in dimensions:
+ Nulls in dimension attributes should be avoided because diff erent databases handle grouping and constraining on nulls inconsistently.
+
+Role-playing dimensions:
+In data warehousing, role-playing dimensions are dimensions that play multiple roles in a fact table. 
+They refer to the same underlying table or data but are used multiple times within a schema to represent different perspectives or contexts. 
+This is common in star schemas and snowflake schemas.
+
+Junk Dimensions:
+Junk dimensions are a data warehousing concept used to consolidate low-cardinality, miscellaneous attributes (such as flags, indicators, or status codes) that do not naturally fit into other dimensions. By combining these attributes into a single dimension, junk dimensions help reduce clutter in the schema and improve manageability.
+
+Snowflaked Dimensions:
+When a hierarchical relationship in a dimension table is normalized, low-cardinality attributes appear as secondary tables connected to the base dimension table by
+an attribute key.
+
+Outtrigger Dimensions:
+A dimension can contain a reference to another dimension table. 
+For instance, a bank account dimension can reference a separate dimension representing the date
+the account was opened. These secondary dimension references are called outrigger
+dimensions.
+
+Conformed Dimensions:
+Dimension tables conform when attributes in separate dimension tables have the
+same column names and domain contents. Information from separate fact tables
+can be combined in a single report by using conformed dimension attributes that
+are associated with each fact table. 
+
+Conformed dimensions:
+Conformed dimensions are dimensions in a data warehouse that are shared across multiple fact tables or data marts, maintaining consistent meaning, structure, and values. 
+They enable consistent reporting and analysis by providing a single version of the truth.
+
+Shrunken dimensions are conformed dimensions that are a subset of rows and/or
+columns of a base dimension.
+When to Use Shrunken Dimensions
+Aggregated Data Marts: When fact tables are aggregated to higher levels of granularity (e.g., time periods, locations).
+Simplified Reporting Needs: When the business logic requires only a subset of attributes or members.
+Optimizing Performance: For large-scale data warehouses where reducing dimensional data complexity can save time and resources.
+
+SLowly changing dimensions:
+Type 0: retain original
+Type 1: overwrite
+Type 2: Add new row
+Type 3: Add new attribute
+Type 4: Add mini dimension
+Type 5: Add mini dimension and type 1 out trigger
+
+
+
+
+
+
 
 
 

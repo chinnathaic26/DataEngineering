@@ -130,7 +130,8 @@ Type 4: Add mini dimension
 Type 5: Add mini dimension and type 1 out trigger
 
 
-
+Lag duration facts measure the time elapsed between two related events in a business process or workflow. 
+These facts are commonly used in data warehouses to track delays, lead times, or the duration between specific events.
 
 
 

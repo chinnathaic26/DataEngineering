@@ -1,0 +1,6 @@
+
+1. use select column_name from statement, instead select *
+2. use group by instead of distinct
+3. top/limit
+4.use primary key in create table statment
+5.use index in sql

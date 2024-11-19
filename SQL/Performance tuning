@@ -8,8 +8,24 @@
 7.Avoid too many JOINS.
 8. Create JOINS with inner Join not WHERE.
 
-
+Question 1:
 The number of rows will be very high in a Master Table or Parent Table. This statement is true or false.  FALSE
-Question 2
+Question 2:
 The SQL performance tuning consideration has to be given to --- type of table. CHILD TABLE not MASTER TABLE
- 
+
+
+CHAR and VARCHAR:
+CHAR - becoz of fixed length definition, more disk space is utilized and results in negative effects on query execution.
+When to use CHAR?? when lenghth is fixed
+When to use VARCHAR?? when length is not sure.
+
+column position number or column name should be mentioned in order by clause for fast processing.
+
+
+
+
+
+
+
+
+

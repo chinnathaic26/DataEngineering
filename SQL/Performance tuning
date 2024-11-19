@@ -2,5 +2,14 @@
 1. use select column_name from statement, instead select *
 2. use group by instead of distinct
 3. top/limit
-4.use primary key in create table statment
-5.use index in sql
+4.use primary key in create table statement
+5.use index in sql.
+6. use UNION instead of OR condition.
+7.Avoid too many JOINS.
+8. Create JOINS with inner Join not WHERE.
+
+
+The number of rows will be very high in a Master Table or Parent Table. This statement is true or false.  FALSE
+Question 2
+The SQL performance tuning consideration has to be given to --- type of table. CHILD TABLE not MASTER TABLE
+ 

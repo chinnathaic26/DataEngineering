@@ -21,6 +21,27 @@ When to use VARCHAR?? when length is not sure.
 
 column position number or column name should be mentioned in order by clause for fast processing.
 
+Sequence flow of execution:
+
+FROM
+WHERE
+GROUP BY
+HAVING
+SELECT COLUMN LIST
+ORDER BY
+
+Performance impact of where vs having clause:
+use where clause wherever possible
+
+select colr,sum(qty) from colors where colr <> black group by colr having sum(qty)>10000
+
+select colr,sum(qty) from colors group by colr having sum(qty)>1000 and colr<>black
+
+count(*) will be slow
+instead use count(1) will be better.
+
+use correlated sub query using Exists ( super fast )
+select ename, sal, deptno from emp where EXISTS (select null from dept where emp.deptno=dept.deptno);
 
 
 

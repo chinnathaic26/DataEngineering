@@ -1,1 +1,11 @@
+1. Read your input twice before executing.
+2. System resources are usually protected.
+3. Setup a safe environment. (VM or unpreviledge user account)
+
+cd - move to the home directory
+cd /home - move into the directory specified
+cd .. one level up
+
+
+
 

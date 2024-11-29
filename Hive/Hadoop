@@ -1,1 +1,7 @@
+Scalability, Fault tolerance, recoverability
+
+1st key component: HDFS storage
+YARN - Resources
+Map reduce - processing - batchwise
+Map reduce alternative - spark
 

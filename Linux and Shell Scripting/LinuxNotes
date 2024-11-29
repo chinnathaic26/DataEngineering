@@ -7,6 +7,11 @@ cd /home - move into the directory specified
 cd .. one level up
 
 Types of files:
+Directories - contains other files
+Regular files
+executable files
+Links - pointer to other files
+device files
 
 
 

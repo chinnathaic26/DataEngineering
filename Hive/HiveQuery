@@ -6,6 +6,9 @@ beeline - shell client
 -e to run the query in double quotes
 -f to run the script with a file
 
+Hive built-in function:
+
+
 
 
 

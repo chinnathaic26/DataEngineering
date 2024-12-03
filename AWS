@@ -1,5 +1,146 @@
-Lamba and Glue
+
+https://app.pluralsight.com/ilx/video-courses/56899c3f-3157-4538-bbca-56037754767d/b8ad62c4-8460-4ed6-92ae-67ad6eeef780/0bd18489-108b-4b38-b65e-c6ea29ffe6fbLamba and Glue
 
 Lamba is used for run code snippets - short peiece of code
 Serverless
 Stateless
+
+
+Lamba Advantanges:
+Scalability
+Integrations
+Pay for what you use
+
+Cost components:
+Number of requests
+Allocated memory
+-128MB to 3008 MB
+Increments of 64 MB
+Duration
+100 ms increments a, rounded up 
+900 seconds limit.
+
+Number of requests
+-$0.20 per million (US East)
+
+Memory and duration
+-$0.0000166667 per GB seconds
+
+Lambda integrations:
+1. S3  ( trigger with storage releated events
+IOT - trigger with custom rule
+SNS - trigger by subscribing to a topic
+Kinesis data stream - reads from stream and invokes
+DynamoDB stream - reads from stream and invokes
+
+
+Labda Use Cases:
+File processing:
+-onvoke on s3 events
+
+stream processing:
+Kinesis data tsreams
+
+kinesis firehouse:
+dynamoDB stream
+
+Scheduler -
+Invoke on cloudwatch events
+
+Kinesis data streams:
+retires until success or expiration
+blocks kinesis shards
+Payload limit is 6 MB
+
+Performance:
+Adjust memory
+15 minutes limit
+
+Lambda Antipatterns:
+Stateful application
+Long running code
+
+
+AWS Glue:
+ETL focused
+Serverless
+Fully managed Spark cluster
+
+
+ETL Issues: More data
+Changinf formats and schemas
+Complicated operations - Managing infrastructure, Handling errors
+
+GLUE Components
+Data catalog - DB's and crawlers
+ETL - Job authoring and execution
+
+Glue Antipattersn:
+Many small jobs runinng
+Need to customize spark cluster
+
+Glue Pricing:
+Monthly free tier
+$1 per million requests
+
+
+AWS _ EMR: Elastic Map reduce
+
+Transient Vs Lon-running EMR cluster
+Optimizing Instance types
+Configuring ENR
+Batch Processing with EMR
+Stream processing with EMR
+
+
+Need for EMR:
+Hadoop setup and operations
+Overprovisioning
+Integration with AWS
+
+EMR: Managed Hadoop and Spark service
+AWS integrations
+Decoupling storage and compure as which is very important for achieving scalability and lowering costs.
+
+EMR Storage: HDFS - default size - 128MB
+Local file systame - EC2 instances
+EMR file syate - Kind of hadoop distributed file systems S3 to S3 
+
+EMR nodes:
+Master Node ( one or 3 master nodes for high availaility)
+Core nodes - on HDFS
+Task nodes - number of data processing 
+
+
+Transient vs Long- Running Clusters:
+
+Transient                            Lond running
+Terrminates automatically            Terminates manually
+Run 1-hour job 10 times a day        Run 2 -hour job 12 times a day
+Needs Initialization ( 15 mins)      Available
+Data exploration, experiments        Machine Learning interations on HDFS
+
+
+Instance Types:
+Batch processing - general purpose instances
+Machine Learning - compute instances
+Deep learning - GPU instances
+Large HDFS - storage instances
+Large interactive analysis - Memory instances
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

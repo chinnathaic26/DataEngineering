@@ -1,1 +1,35 @@
 
+Spark is part of Hadoop eco system which is built on top of Hadoop.
+HDFS, Map reduce,Yarn
+Yarn - cluster manager to run the job
+HDFS - data stored / distributed
+
+Real-time and well as batch processing
+Interactive REPL environment
+support for - python java scala and R
+
+
+Spark - RDD - fundamanetal building blocks of spark.
+Resilient Distributed Datasets - performed on in-memory objects.
+an RDD is a collection of entities. and RDD is analogous in collection in Java
+it can be assigned to a variable and methods can be invoked on it.
+Methods return values or apply and transformations on the RDD.
+
+
+RDD's:
+Partitioned ( split across data nodes in a cluster )
+immutable -( once created cannot be changed)
+Resilient -( can be reconstructed even if a node crashes.)
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -177,6 +177,26 @@ git switch -c <new branch name> to create a new branch and switch to it.
 
 55. scalar
 
-56.
+1. GIT - distributes source code management.
+2.Git written C and fast run times.
+3.repository - contains all catalog's metadata
+4. initialize a git rep == git init
+5. add readme.md file == git add readme.md
+6.commit the changes == git commit -m "added readme.md file"
+7. changes the remote file with local changes == git push
+8. VCS = veersion control syste == keep track of any changes made to a file or group of data and go back to specific version if necessary.
+9.diif types of VCS:
+centralised VCS: utilises a central server for code storage and version control.
+distributes: decentralised collaboration by providing the each developer with a own repository with complete histroy.
+10. git fetch and git pull diff:
+git fetch = retrieve changes from remote repo without merge
+git pull = retrive changes and merges into active branch.
+11.git pull origin master = all changes from origin master branch and merge them into local branch
+12. git add == add a file updates to your index from your existing directory.
+13. git hooks == this directory contains shell scripts that are run after the related commands run
+14. git log = individual commits in your project history.
+15. git clone = to make local copy of a remote git repo.
+16. GitHub = web based platform used to host and collaborate on software development projects that used Git version control system.
+17. 
 
 

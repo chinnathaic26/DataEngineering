@@ -227,7 +227,28 @@ git rebase = moves the entire feature branch to begin on tip of main branch , in
 34. undo last Git commit = git reset --soft HEAD~1 ( keep changes )
 35. undo last Git commit = git reset -- hard HEAD~1 ( discard the changes)
 36. Git tags = tags are pointers to specific commits used to mark release versions.
-37.
+37. Git stash = used to save the changes made in the file temporarily without committing them to the repository such that the developer can work on other features by switching branches.
+38. detach HEAD = A detached HEAD state occurs when you check out a specific commit, tag, or remote branch instead of a local branch. 
+                 In this state, any new commits you make will not belong to any branch and may be lost once you switch to another branch.
+39. create and delete tag = git tag <tagname>, git tag -d <tagname>
+40. bare repo in git = that contains no working directory , it mainly used as remote repo for collaboration.
+41. .gitignore file = intentionaly untracked files files git should ignore
+42. how to apply patch in git? if it's a commit, use git am <patch-file>.
+43. temporarily store changes without commiting them in Git ? Git stash
+44. git reflog = 
+45. Git cherry-pick? apply a specific commit from one branch to another branch.
+46. view commit history of a git repo? git log --oneline
+47. how do you squash mulitiple commits into one? git rebase -i HEAD ~n
+48. rename a local and remote branch in Git ? 
+local => git branch -m <old-name> <new-name>
+remote => git push origin --delete <old_name> git push origin <new-name>
+49. move commits from one branch to another - git cherry-pick <commit-hash>
+50.diff between git rebase and git cherry-pick
+51. revert a commit => gi revert <commit-hash>
+52. diff between git clone and git fork:
+git clone - local copy of a repo
+git fork = create a personal copy of someone else's repo under your account and allowing you to freely modify it.
+
 
 
 

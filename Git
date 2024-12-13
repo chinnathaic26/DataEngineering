@@ -197,6 +197,48 @@ git pull = retrive changes and merges into active branch.
 14. git log = individual commits in your project history.
 15. git clone = to make local copy of a remote git repo.
 16. GitHub = web based platform used to host and collaborate on software development projects that used Git version control system.
-17. 
+17. what happen if u delete .git directory =  if u delete .git directory you will lose track of project history.
+18. In Git, what command creates a Commit Message? = git commit -m "committed message"
+19. The following are some fundamental Git operations:
+Initialize
+Add
+Commit
+Push
+Pull
+20. Git -it tree = creates a tree object with the mode and names of all elements,
+21. Git - bisect = command aids in the identification of problematic commits.
+22. Git rebase = works in a similar way as git merge. With one exception, it merges two branches into a single branch. 
+                 The command git rebase rewrites the commit history.
+23. Git Merge Conflict = When two commits to a Git repository modify the same lines of code, a Git merge conflict happens. 
+                         Git encounters a merge conflict when it tries to reconcile the changes between the two commits automatically.
+24. Git clean = untracked files and directoriea are removed from Git working directory repositories.
+25. Git config = used to configure your Git installation config parameters.
+26. SubGit = tool that allows you to migrate from SVN repos ato Git.
+27. how to resolve a conflict in Git? 
+If you need to resolve a conflict with Git, update the list to make the necessary changes, then execute "git add" to add the resolved directory, and then "Git commit" to commit the repaired merge.
+28. why branching required in GIT - you may retain your branch and hop between different branches with aid of branching.
+29. numerous hosting options for Git - Visual Syudio Online, Github, SOurceForge.net,Bitbucket
+30.git status = displays the current status of working directory and shows which files are in modified ,staged or committed state.
+31.git stash = commonly used to save changes made in file temporarily without committing them to repo such that developer can work on other features by switching branches.
+32. git pull request = way to merge the changes made in branch with main code.
+33. git merge and git rebase = 
+git merge = creates a new commit that combines the changes from both branches
+git rebase = moves the entire feature branch to begin on tip of main branch , incorporating all new commits.
+34. undo last Git commit = git reset --soft HEAD~1 ( keep changes )
+35. undo last Git commit = git reset -- hard HEAD~1 ( discard the changes)
+36. Git tags = tags are pointers to specific commits used to mark release versions.
+37.
+
+
+
+
+
+
+
+
+
+
+
+
 
 

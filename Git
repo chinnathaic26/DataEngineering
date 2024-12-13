@@ -248,6 +248,15 @@ remote => git push origin --delete <old_name> git push origin <new-name>
 52. diff between git clone and git fork:
 git clone - local copy of a repo
 git fork = create a personal copy of someone else's repo under your account and allowing you to freely modify it.
+53. how to fix a broken commit - git commit --amend
+54. git -rm [file] = delete the file from working directory and stages the deletion.
+55. git log == version history
+56. git show [commit] = shows metadata and content changes of specified commit.
+57. git tag [commitID] = used to give tags to specified commit.
+58. git checkout [branch name] = used to switch from ome branch to another.
+59. git checkout -b [branch name] = creates a new branch and also switches to it.
+
+
 
 
 

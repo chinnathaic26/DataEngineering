@@ -14,4 +14,32 @@ Links - pointer to other files
 device files
 
 
+Admin operations should done using sudo 
+Normal operations should be done as regular user.
+Elastic Bean Stalk - helps to deploy and scale web applications on AWWS.
+Boot prcess:
+cd /boot
+ls
+/bin - binary files for single user mode commands
+/sbin - binary files for multi user commands
+/boot - linux images and boot configuration
+/dev - Pseudo files representing devices
+/etc configuration files
+/home user files
+/lib software library dependencies
+/root root user files
+/usr additional binaries
+/var updating files (logs, app data , cache )
+/proc files represnting running system process
+/sys data on system and kernel resources
+/dev pseudo files representing devices
+
+Managing Linux Environments :
+
+mount - is used to mount the files in desired location,
+dmesg - displaye the kernel ring buffer messages.
+localeetl set-locale LANG=en_CA-utf8
+df -ht ext4
+lsblk | grep sd
+
 

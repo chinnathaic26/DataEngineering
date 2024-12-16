@@ -41,5 +41,21 @@ dmesg - displaye the kernel ring buffer messages.
 localeetl set-locale LANG=en_CA-utf8
 df -ht ext4
 lsblk | grep sd
+echo "Hello World" > /var/www/html/hello.html
+
+Compiling Code in Linux:
+
+New code
+Customizing existing code
+customizing the linux kernel
+
+Risks:
+No automated security patches
+depencies broken by system updates
+unreliable source codes
+
+Standard Input stdin 0
+Standard Output stdout 1
+Standard Error stderr 2
 
 

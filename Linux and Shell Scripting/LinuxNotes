@@ -58,4 +58,43 @@ Standard Input stdin 0
 Standard Output stdout 1
 Standard Error stderr 2
 
+pwd
+mkdir scripts
+touch file1
+updatedb
+cut -d: -f3 /etc/group | sort -rn
+wget pluralsight.comm 2> errorfile.txt
+tar czf newarchive.tar.gz wordpress
+lsmod | grep sound
+modprobe soundscore
+ip route show
+ip addr
+netstat -l
+systemd-resolve --status
+ssh -i mykeyfile.pem ubuntu
+scp -secure copy
+
+
+-----------------
+shell basics
+user inputs
+variables
+flow control - for if while case
+Builtins
+
+-----------------
+#!/bin/bash
+chmod +x myscript.sh
+read number1
+total=$number1*$number2
+for filename in file1 file2 file3
+if test $text1 != $text2; then
+while [$counter -gt 2]; do
+
+Admin Powers:
+Avoid using root account
+create unique accounts for each user
+assign only necessary authority to each user
+use admin power only via sudo
+
 

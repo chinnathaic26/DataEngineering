@@ -185,8 +185,122 @@ calculate running totals with window function
 
 select name,sal,sum(sal) over(order by sal) as running_total from emp;
 
-38>
+38> Fetch unique records from table:
 
+select distinct(name) from employees;
+
+39> default constraint in table:
+
+create table empl(
+id int primary key,
+bk char default 'AUDIT'
+);
+
+40> Write a query to list customers who have placed more than 5 orders. Use the customers and orders tables.
+
+select customer_name from customers where id=( select cust_id from orders group by cust_id having count(*) >=5);
+
+41> Calculate the total revenue, average revenue, and the count of orders grouped by product category in the sales table.
+
+select sum(revenue),avg(revenue),count(revenue) from sales group by produt_category;
+
+42> Write a query to find the names of employees who earn more than the average salary in the company.
+
+select employee_name from employees where salary> (select avg(salary) from employees);
+
+43> Write a query to list all employees and their department names, including employees who don’t belong to any department.
+
+select e.*.d.* from employees e left join department d on e.id=d.id;
+
+44> Write a query to list employees along with their manager’s name. Assume there’s a column manager_id in the employees table that points to another employee’s employee_id.
+SELECT e.employee_name AS employee, m.employee_name AS manager
+ 
+FROM employees e
+ 
+LEFT JOIN employees m ON e.manager_id = m.employee_id;
+
+45> Write a query to categorize employees based on their salary into “High”, “Medium”, and “Low” categories.
+
+SELECT employee_name,
+ 
+       CASE 
+ 
+           WHEN salary > 100000 THEN 'High'
+ 
+           WHEN salary BETWEEN 50000 AND 100000 THEN 'Medium'
+ 
+           ELSE 'Low'
+ 
+       END AS salary_category
+ 
+FROM employees;
+
+46> Find duplicate records:
+SELECT email, COUNT(*) AS count
+FROM users
+GROUP BY email
+HAVING COUNT(*) > 1;
+
+47> Write a query to assign a row number to each employee, ordered by their salary in descending order.
+
+SELECT employee_name, salary, 
+ 
+       ROW_NUMBER() OVER (ORDER BY salary DESC) AS row_num
+ 
+FROM employees;
+
+48> How can you improve the performance of a slow query?
+Answer:
+To improve query performance:
+
+Use indexes on frequently queried columns.
+Optimize joins: Avoid unnecessary joins and subqueries.
+Rewrite subqueries as joins where possible.
+Limit data: Only select the necessary columns, not SELECT *.
+Use EXPLAIN to analyze query plans and identify bottlenecks.
+Avoid complex operations in WHERE clauses (e.g., functions on columns).
+
+50> What is Cascading in Foreign Keys?
+Answer:
+Cascading is a set of rules that define what happens to related rows when a row in a referenced table is updated or deleted.
+
+CASCADE: Automatically updates or deletes rows in the child table when the corresponding row in the parent table is updated or deleted.
+SET NULL: Sets the foreign key values to NULL when the parent row is deleted.
+NO ACTION: Prevents the update or delete operation if there are any related rows in the child table.
+
+51> full form of SQL
+strucuture query language
+
+52> Views are also known as virtual tables
+
+53> how many primary key a table can have?
+only one
+
+54> which datatype can store unstructure data type in a column? 
+RAW
+
+55> What is returned by INSTR ('JAVAT POINT', 'P')?
+7
+
+56> Command that let u change one or more fields in a table is?
+MODIFY
+
+58> clause creates temporary relation for the query on which it is defined.
+WITH Clause
+
+59> SELECT ROUND (65.726, -1) FROM DUAL;  
+
+60> command makes the updates performed by the transaction permanent in the database?
+COMMIT
+
+61> Which type of JOIN is used to returns rows that do not have matching values?
+OUTER JOIN
+
+62> Group of operations that form a single logical unit of work is known as
+TRANSACTION
+
+63> Shared locks are applied while performing
+READ
 
 
 

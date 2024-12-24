@@ -1,0 +1,18 @@
+NUMBER(p,s) precision and scale
+NUMBER(p,0) = NUMBER(p)
+FLOAT is a subtype of NUMBER
+
+
+
+SELECT TO_CHAR(TO_DATE('01-01-2009', 'MM-DD-YYYY') FROM DUAL;
+
+SELECT TO_CHAR(TO_DATE('01-01-2009', 'MM-DD-YYYY')) FROM DUAL;
+01-JAN-09
+
+ADD 30 DAYS TO DATE COLUMN:
+SELECT order_date + INTERVAL '30' DAY AS "Due Date" FROM ORDERS;
+
+DATATYPE CONVERSION:
+
+SELECT salary + '10' FROM employees;
+SELECT last_name FROM employees WHERE employee_id = '200'; -- Oracle implicitly converts '200' to 200:

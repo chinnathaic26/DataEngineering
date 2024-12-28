@@ -806,6 +806,94 @@ Bull                            4100       4100
 
 
 ==================================================================================================
+PERCENT RANK:
+
+SELECT department_id, last_name, salary, PERCENT_RANK() 
+       OVER (PARTITION BY department_id ORDER BY salary DESC) AS pr
+  FROM employees
+  ORDER BY pr, salary, last_name;
+
+DEPARTMENT_ID LAST_NAME                     SALARY         PR
+------------- ------------------------- ---------- ----------
+           10 Whalen                          4400          0
+           40 Mavris                          6500          0
+              Grant                           7000          0
+. . .
+           80 Vishney                        10500 .181818182
+           80 Zlotkey                        10500 .181818182
+           30 Khoo                            3100         .2
+. . .
+           50 Markle                          2200 .954545455
+           50 Philtanker                      2200 .954545455
+           50 Olson                           2100          1
+. . .
+
+====================================================================================================
+POWER:
+
+SELECT POWER(3,2) "Raised"
+  FROM DUAL;
+
+    Raised
+----------
+         9
+
+====================================================================================================
+
+RANK:
+
+SELECT department_id, last_name, salary,
+       RANK() OVER (PARTITION BY department_id ORDER BY salary) RANK
+  FROM employees WHERE department_id = 60
+  ORDER BY RANK, last_name;
+
+DEPARTMENT_ID LAST_NAME                     SALARY       RANK
+------------- ------------------------- ---------- ----------
+           60 Lorentz                         4200          1
+           60 Austin                          4800          2
+           60 Pataballa                       4800          2
+           60 Ernst                           6000          4
+           60 Hunold                          9000          5
+
+======================================================================================================
+
+REGEXP COUNT
+
+SELECT REGEXP_COUNT('123123123123123', '(12)3', 1, 'i') REGEXP_COUNT
+   FROM DUAL;
+ 
+REGEXP_COUNT
+------------
+           5
+
+
+SELECT REGEXP_COUNT('123123123123', '123', 3, 'i') COUNT FROM DUAL; 
+
+     COUNT
+----------
+         3
+
+========================================================================================================
+
+select regexp_count('ABC123', '[A-Z]'), regexp_count('A1B2C3', '[A-Z]') from dual;
+
+REGEXP_COUNT('ABC123','[A-Z]') REGEXP_COUNT('A1B2C3','[A-Z]')
+------------------------------ ------------------------------
+			     3				    3
+
+========================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

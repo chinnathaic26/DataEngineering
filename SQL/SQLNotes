@@ -292,21 +292,520 @@ e to the 4th power
 
 ==================================================================================
 
+EXTRACT
+
+SELECT last_name, employee_id, hire_date
+  FROM employees
+  WHERE EXTRACT(YEAR FROM (hire_date, 'DD-MON-RR')) > 2007
+  ORDER BY hire_date;
+
+LAST_NAME                 EMPLOYEE_ID HIRE_DATE
+------------------------- ----------- ---------
+Johnson                           179 04-JAN-08
+Grant                             199 13-JAN-08
+Marvins                           164 24-JAN-08
+. . .
+
+=====================================================================================
+FIRST AND LAST :
+The following example returns, within each department of the sample table hr.employees, the minimum salary among the employees who make the lowest commission and the maximum salary among the employees who make the highest commission:
+SELECT department_id,
+       MIN(salary) KEEP (DENSE_RANK FIRST ORDER BY commission_pct) "Worst",
+       MAX(salary) KEEP (DENSE_RANK LAST ORDER BY commission_pct) "Best"
+  FROM employees
+  GROUP BY department_id
+  ORDER BY department_id;
+
+DEPARTMENT_ID      Worst       Best
+------------- ---------- ----------
+           10       4400       4400
+           20       6000      13000
+           30       2500      11000
+           40       6500       6500
+           50       2100       8200
+           60       4200       9000
+           70      10000      10000
+           80       6100      14000
+           90      17000      24000
+          100       6900      12008
+          110       8300      12008
+                    7000       7000
 
 
 
+====================================================================================================
+
+FLOOR:
+SELECT FLOOR(15.7) "Floor"
+  FROM DUAL;
+
+     Floor
+----------
+        15
+
+====================================================================================================
+
+INITCAP:
+
+SELECT INITCAP('the soap') "Capitals"
+  FROM DUAL; 
+
+Capitals
+---------
+The Soap
+
+===================================================================================================
+
+INSTR:
+
+The following example searches the string CORPORATE FLOOR, beginning with the third character, for the string "OR". It returns the position in CORPORATE FLOOR at which the second occurrence of "OR" begins:
+
+SELECT INSTR('CORPORATE FLOOR','OR', 3, 2) "Instring"
+  FROM DUAL;
+ 
+  Instring
+----------
+        14
+
+SELECT INSTR('CORPORATE FLOOR','OR', -3, 2) "Reversed Instring"
+  FROM DUAL;
+ 
+Reversed Instring
+-----------------
+                2
+
+
+=====================================================================================================
+
+LAG
+
+The following example provides, for each purchasing clerk in the employees table, the salary of the employee hired just before:
+
+SELECT hire_date, last_name, salary,
+       LAG(salary, 1, 0) OVER (ORDER BY hire_date) AS prev_sal
+  FROM employees
+  WHERE job_id = 'PU_CLERK'
+  ORDER BY hire_date;
+   
+HIRE_DATE LAST_NAME                     SALARY   PREV_SAL
+--------- ------------------------- ---------- ----------
+18-MAY-03 Khoo                            3100          0
+24-JUL-05 Tobias                          2800       3100
+24-DEC-05 Baida                           2900       2800
+15-NOV-06 Himuro                          2600       2900
+10-AUG-07 Colmenares                      2500       2600
+
+==========================================================================================================
+LAST_DAY:
+
+SELECT SYSDATE,
+       LAST_DAY(SYSDATE) "Last",
+       LAST_DAY(SYSDATE) - SYSDATE "Days Left"
+  FROM DUAL;
+
+SYSDATE   Last       Days Left
+--------- --------- ----------
+30-MAY-09 31-MAY-09          1
+
+
+========================================================================================================
+
+LEAD:
+The following example provides, for each employee in Department 30 in the employees table, the hire date of the employee hired just after:
+
+SELECT hire_date, last_name,
+       LEAD(hire_date, 1) OVER (ORDER BY hire_date) AS "NextHired" 
+  FROM employees
+  WHERE department_id = 30
+  ORDER BY hire_date;
+
+HIRE_DATE LAST_NAME                 Next Hired
+--------- ------------------------- ----------
+07-DEC-02 Raphaely                  18-MAY-03
+18-MAY-03 Khoo                      24-JUL-05
+24-JUL-05 Tobias                    24-DEC-05
+24-DEC-05 Baida                     15-NOV-06
+15-NOV-06 Himuro                    10-AUG-07
+10-AUG-07 Colmenares
+
+========================================================================================================
+
+LEAST:
+
+SELECT LEAST('HARRY','HARRIOT','HAROLD') "Least"
+  FROM DUAL;
+ 
+Least 
+------
+HAROLD
+
+======================================================================================================
+
+
+LENGTH:
+
+SELECT LENGTH('CANDIDE') "Length in characters"
+  FROM DUAL;
+
+Length in characters
+--------------------
+                   7
+
+==============================================================================================================
+
+Suppose that you want to know the number of employees with commission rates of less than 20%, including employees who do not receive commissions.
+The following query returns only employees who actually receive a commission of less than 20%:
+
+SELECT COUNT(*)
+  FROM employees
+  WHERE commission_pct < .2;
+
+  COUNT(*)
+----------
+        11
+
+
+SELECT COUNT(*)
+  FROM employees
+  WHERE LNNVL(commission_pct >= .2);
+
+  COUNT(*)
+----------
+        83
+
+===============================================================================================================
+LOCALTIMESTAMP
+
+SELECT CURRENT_TIMESTAMP, LOCALTIMESTAMP FROM DUAL;
+
+===============================================================================================================
+
+lOG
+
+SELECT LOG(10,100) "Log base 10 of 100"
+  FROM DUAL;
+
+Log base 10 of 100
+------------------
+                 2 
+
+================================================================================================================
+
+LOWER:
+
+SELECT LOWER('MR. SCOTT MCMILLAN') "Lowercase"
+  FROM DUAL;
+
+Lowercase
+--------------------
+mr. scott mcmillan 
+
+================================================================================================================
+LPAD:
+
+SELECT LPAD('Page 1',15,'*.') "LPAD example"
+  FROM DUAL;
+
+LPAD example
+---------------
+*.*.*.*.*Page 1
+
+
+===============================================================================================================
+
+LTRIM:
+
+SELECT LTRIM('<=====>BROWNING<=====>', '<>=') "LTRIM Example"
+  FROM DUAL;
+
+LTRIM Example
+---------------
+BROWNING<=====>
+
+=====================================================================================================================
+
+MAX
+
+SELECT MAX(salary) "Maximum"
+  FROM employees;
+ 
+   Maximum
+----------
+     24000
+
+The following example calculates, for each employee, the highest salary of the employees reporting to the same manager as the employee.
+
+SELECT manager_id, last_name, salary,
+       MAX(salary) OVER (PARTITION BY manager_id) AS mgr_max
+  FROM employees
+  ORDER BY manager_id, last_name, salary;
+
+MANAGER_ID LAST_NAME                     SALARY    MGR_MAX
+---------- ------------------------- ---------- ----------
+       100 Cambrault                      11000      17000
+       100 De Haan                        17000      17000
+       100 Errazuriz                      12000      17000
+       100 Fripp                           8200      17000
+       100 Hartstein                      13000      17000
+       100 Kaufling                        7900      17000
+       100 Kochhar                        17000      17000
+. . .
+
+
+If you enclose this query in the parent query with a predicate, then you can determine the employee who makes the highest salary in each department:
+
+SELECT manager_id, last_name, salary
+  FROM (SELECT manager_id, last_name, salary, 
+               MAX(salary) OVER (PARTITION BY manager_id) AS rmax_sal
+          FROM employees)
+  WHERE salary = rmax_sal
+  ORDER BY manager_id, last_name, salary;
+
+MANAGER_ID LAST_NAME                     SALARY
+---------- ------------------------- ----------
+       100 De Haan                        17000
+       100 Kochhar                        17000
+       101 Greenberg                      12008
+       101 Higgins                        12008
+       102 Hunold                          9000
+       103 Ernst                           6000
+       108 Faviet                          9000
+       114 Khoo                            3100
+       120 Nayer                           3200
+       120 Taylor                          3200
+       121 Sarchand                        4200
+       122 Chung                           3800
+       123 Bell                            4000
+       124 Rajs                            3500
+       145 Tucker                         10000
+       146 King                           10000
+       147 Vishney                        10500
+       148 Ozer                           11500
+       149 Abel                           11000
+       201 Fay                             6000
+       205 Gietz                           8300
+           King                           24000
+ 
+22 rows selected.
+
+
+============================================================================================================
+
+MEDIAN:
+
+SELECT department_id, MEDIAN(salary)
+  FROM employees
+  GROUP BY department_id
+  ORDER BY department_id;
+
+DEPARTMENT_ID MEDIAN(SALARY)
+------------- --------------
+           10           4400
+           20           9500
+           30           2850
+           40           6500
+           50           3100
+           60           4800
+           70          10000
+           80           8900
+           90          17000
+          100           8000
+          110          10154
+                        7000
 
 
 
+=============================================================================================================
+
+MIN:
+
+SELECT MIN(hire_date) "Earliest"
+  FROM employees;
+ 
+Earliest
+---------
+13-JAN-01
+
+============================================================================================================
+
+MOD:
+
+SELECT MOD(11,4) "Modulus"
+  FROM DUAL;
+
+   Modulus
+----------
+         3
+
+
+===========================================================================================================
+MONTHS_BETWEEN:
+
+SELECT MONTHS_BETWEEN
+       (TO_DATE('02-02-1995','MM-DD-YYYY'),
+        TO_DATE('01-01-1995','MM-DD-YYYY') ) "Months"
+  FROM DUAL;
+
+    Months
+----------
+1.03225806
+
+==========================================================================================================
+
+NANVL:
+
+Using table float_point_demo created for TO_BINARY_DOUBLE, insert a second entry into the table: 
+
+INSERT INTO float_point_demo
+  VALUES (0,'NaN','NaN');
+
+SELECT *
+  FROM float_point_demo;
+
+   DEC_NUM BIN_DOUBLE  BIN_FLOAT
+---------- ---------- ----------
+   1234.56 1.235E+003 1.235E+003
+         0        Nan        Nan
+
+The following example returns bin_float if it is a number. Otherwise, 0 is returned.
+SELECT bin_float, NANVL(bin_float,0)
+  FROM float_point_demo;
+
+ BIN_FLOAT NANVL(BIN_FLOAT,0)
+---------- ------------------
+1.235E+003         1.235E+003
+       Nan                  0
+
+
+==========================================================================================================
+NCHR:
+
+SELECT NCHR(187)
+  FROM DUAL;
+
+N
+-
+> 
+
+SELECT CHR(187 USING NCHAR_CS)
+  FROM DUAL;
+
+C
+-
+> 
+
+=========================================================================================================
+NEW TIME
+
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YYYY HH24:MI:SS';
+
+SELECT NEW_TIME(TO_DATE('11-10-09 01:23:45', 'MM-DD-YY HH24:MI:SS'), 'AST', 'PST')
+         "New Date and Time"
+  FROM DUAL;
+
+New Date and Time
+--------------------
+09-NOV-2009 21:23:45
+
+========================================================================================================
+
+NEXT_DAY
+
+SELECT NEXT_DAY('15-OCT-2009','TUESDAY') "NEXT DAY"
+  FROM DUAL;
+
+NEXT DAY
+--------------------
+20-OCT-2009 00:00:00
+
+========================================================================================================
+NTILE:
+
+SELECT last_name, salary, NTILE(4) OVER (ORDER BY salary DESC) AS quartile
+  FROM employees
+  WHERE department_id = 100
+  ORDER BY last_name, salary, quartile;
+
+LAST_NAME                     SALARY   QUARTILE
+------------------------- ---------- ----------
+Chen                            8200          2
+Faviet                          9000          1
+Greenberg                      12008          1
+Popp                            6900          4
+Sciarra                         7700          3
+Urman                           7800          2
+
+========================================================================================================
+NULLIF:
+
+CASE WHEN expr1 = expr2 THEN NULL ELSE expr1 END
+SELECT e.last_name, NULLIF(j.job_id, e.job_id) "Old Job ID"
+  FROM employees e, job_history j
+  WHERE e.employee_id = j.employee_id
+  ORDER BY last_name, "Old Job ID";
+
+LAST_NAME                 Old Job ID
+------------------------- ----------
+De Haan                   IT_PROG
+Hartstein                 MK_REP
+Kaufling                  ST_CLERK
+Kochhar                   AC_ACCOUNT
+Kochhar                   AC_MGR
+Raphaely                  ST_CLERK
+Taylor                    SA_MAN
+Taylor
+Whalen                    AC_ACCOUNT
+Whalen
+
+==========================================================================================================
+
+NVL:
+
+SELECT last_name, NVL(TO_CHAR(commission_pct), 'Not Applicable') commission
+  FROM employees
+  WHERE last_name LIKE 'B%'
+  ORDER BY last_name;
+ 
+LAST_NAME                 COMMISSION
+------------------------- ----------------------------------------
+Baer                      Not Applicable
+Baida                     Not Applicable
+Banda                     .1
+Bates                     .15
+Bell                      Not Applicable
+Bernstein                 .25
+Bissot                    Not Applicable
+Bloom                     .2
+Bull                      Not Applicable
 
 
 
+=====================================================================================================
+
+NVL2
+
+NVL2 lets you determine the value returned by a query based on whether a specified expression is null or not null. If expr1 is not null, then NVL2 returns expr2. If expr1 is null, then NVL2 returns expr3.
+
+SELECT last_name, salary,
+       NVL2(commission_pct, salary + (salary * commission_pct), salary) income
+  FROM employees
+  WHERE last_name like 'B%'
+  ORDER BY last_name;
+
+LAST_NAME                     SALARY     INCOME
+------------------------- ---------- ----------
+Baer                           10000      10000
+Baida                           2900       2900
+Banda                           6200       6820
+Bates                           7300       8395
+Bell                            4000       4000
+Bernstein                       9500      11875
+Bissot                          3300       3300
+Bloom                          10000      12000
+Bull                            4100       4100
 
 
-
-
-
-
+==================================================================================================
 
 
 

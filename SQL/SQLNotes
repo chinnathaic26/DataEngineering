@@ -884,6 +884,301 @@ REGEXP_COUNT('ABC123','[A-Z]') REGEXP_COUNT('A1B2C3','[A-Z]')
 ========================================================================================================
 
 
+REGEXP_INSTR:
+
+SELECT emailID, REGEXP_INSTR(emailID, '\w+@\w+(\.\w+)+') "IS_A_VALID_EMAIL" FROM regexp_temp;
+
+EMAILID 	     IS_A_VALID_EMAIL
+-------------------- ----------------
+johndoe@example.com		    1
+example.com			    0
+
+=======================================================================================================
+
+SELECT emailID, REGEXP_INSTR(emailID, '\w+@\w+(\.\w+)+') "IS_A_VALID_EMAIL" FROM regexp_temp;
+
+EMAILID 	     IS_A_VALID_EMAIL
+-------------------- ----------------
+johndoe@example.com		    1
+example.com			    0
+
+
+SELECT empName, REGEXP_REPLACE (empName, 'Jane', 'John') "STRING_REPLACE" FROM regexp_temp;
+
+EMPNAME		STRING_REPLACE
+--------	--------------
+John Doe	John Doe
+Jane Doe	John Doe
+
+
+SELECT empName, REGEXP_SUBSTR(emailID, '[[:alnum:]]+\@[[:alnum:]]+\.[[:alnum:]]+') "Valid Email" FROM regexp_temp;
+
+EMPNAME  Valid Email
+-------- -------------------
+John Doe johndoe@example.com
+Jane Doe
+
+
+========================================================================================================
+
+SELECT REPLACE('JACK and JUE','J','BL') "Changes"
+     FROM DUAL;
+
+Changes
+--------------
+BLACK and BLUE
+
+=======================================================================================================
+
+The following example rounds a date to the first day of the following year:
+
+SELECT ROUND (TO_DATE ('27-OCT-00'),'YEAR')
+   "New Year" FROM DUAL;
+ 
+New Year
+---------
+01-JAN-01
+
+========================================================================================================
+
+SELECT ROUND(15.193,1) "Round" FROM DUAL;
+
+     Round
+----------
+      15.2
+
+
+SELECT ROUND(15.193,-1) "Round" FROM DUAL;
+
+     Round
+----------
+        20 
+
+
+=====================================================================================================
+
+SELECT department_id, first_name, last_name, salary
+FROM
+(
+  SELECT
+    department_id, first_name, last_name, salary,
+    ROW_NUMBER() OVER (PARTITION BY department_id ORDER BY salary desc) rn
+  FROM employees
+)
+WHERE rn <= 3
+ORDER BY department_id, salary DESC, last_name;
+
+================================================================================================
+
+SELECT RTRIM('<=====>BROWNING<=====>', '<>=') "RTRIM Example"
+  FROM DUAL;
+
+RTRIM Example
+---------------
+<=====>BROWNING
+
+===============================================================================================
+
+SELECT SESSIONTIMEZONE FROM DUAL;
+
+SESSION
+-------
+-08:00
+===============================================================================================
+
+SELECT customer_id, SET(cust_address_ntab) address
+  FROM customers_demo
+  ORDER BY customer_id;
+
+
+=================================================================================================
+
+SELECT SIGN(-15) "Sign" FROM DUAL;
+
+      Sign
+----------
+        -1
+
+=================================================================================================
+
+SELECT SIN(30 * 3.14159265359/180)
+ "Sine of 30 degrees" FROM DUAL;
+
+Sine of 30 degrees
+------------------
+                .5
+
+==================================================================================================
+
+
+SELECT SQRT(26) "Square root" FROM DUAL;
+
+Square root
+-----------
+5.09901951 
+
+
+====================================================================================================
+
+
+SELECT manager_id, last_name, salary,
+   SUM(salary) OVER (PARTITION BY manager_id ORDER BY salary
+   RANGE UNBOUNDED PRECEDING) l_csum
+   FROM employees
+   ORDER BY manager_id, last_name, salary, l_csum;
+
+MANAGER_ID LAST_NAME                     SALARY     L_CSUM
+---------- ------------------------- ---------- ----------
+       100 Cambrault                      11000      68900
+       100 De Haan                        17000     155400
+       100 Errazuriz                      12000      80900
+       100 Fripp                           8200      36400
+       100 Hartstein                      13000      93900
+       100 Kaufling                        7900      20200
+       100 Kochhar                        17000     155400
+       100 Mourgos                         5800       5800
+       100 Partners                       13500     107400
+       100 Raphaely                       11000      68900
+       100 Russell                        14000     121400
+. . .
+       149 Hutton                          8800      39000
+       149 Johnson                         6200       6200
+       149 Livingston                      8400      21600
+       149 Taylor                          8600      30200
+       201 Fay                             6000       6000
+       205 Gietz                           8300       8300
+           King                           24000      24000
+
+
+=====================================================================================================
+
+
+
+SELECT TO_CHAR
+    (SYSDATE, 'MM-DD-YYYY HH24:MI:SS') "NOW"
+     FROM DUAL;
+
+NOW
+-------------------
+04-13-2001 09:45:51
+
+
+======================================================================================================
+
+SELECT SYSTIMESTAMP FROM DUAL;
+
+SYSTIMESTAMP
+------------------------------------------------------------------
+28-MAR-00 12.38.55.538741 PM -08:00
+
+
+======================================================================================================
+
+
+SELECT TO_CHAR('01110') FROM DUAL;
+
+TO_CH
+-----
+01110
+
+======================================================================================================
+
+SELECT TO_CHAR(INTERVAL '123-2' YEAR(3) TO MONTH) FROM DUAL;
+
+TO_CHAR
+-------
++123-02
+
+=======================================================================================================
+
+SELECT To_char(employee_id) "NUM_TO_CHAR" 
+FROM   empl_temp 
+WHERE  employee_id IN ( 111, 112, 113, 115 );
+
+NUM_TO_CHAR
+--------------------
+111
+112
+113
+115
+
+=====================================================================================================
+
+SELECT TO_DATE(
+    'January 15, 1989, 11:00 A.M.',
+    'Month dd, YYYY, HH:MI A.M.',
+     'NLS_DATE_LANGUAGE = American')
+     FROM DUAL;
+
+TO_DATE('
+---------
+15-JAN-89
+
+
+====================================================================================================
+
+SELECT TO_TIMESTAMP ('10-Sep-02 14:10:10.123000', 'DD-Mon-RR HH24:MI:SS.FF')
+   FROM DUAL;
+
+TO_TIMESTAMP('10-SEP-0214:10:10.123000','DD-MON-RRHH24:MI:SS.FF')
+---------------------------------------------------------------------------
+10-SEP-02 02.10.10.123000000 PM
+
+
+===================================================================================================
+
+
+SELECT TRANSLATE('SQL*Plus User''s Guide', ' */''', '___') FROM DUAL;
+
+TRANSLATE('SQL*PLUSU
+--------------------
+SQL_Plus_Users_Guide
+
+
+==================================================================================================
+
+SELECT employee_id,
+      TO_CHAR(TRIM(LEADING 0 FROM hire_date))
+      FROM employees
+      WHERE department_id = 60
+      ORDER BY employee_id;
+
+EMPLOYEE_ID TO_CHAR(T
+----------- ---------
+        103 20-MAY-08
+        104 21-MAY-07
+        105 25-JUN-05
+        106 5-FEB-06
+        107 7-FEB-07
+
+
+===================================================================================================
+
+
+SELECT TRUNC(TO_DATE('27-OCT-92','DD-MON-YY'), 'YEAR')
+  "New Year" FROM DUAL;
+ 
+New Year
+---------
+01-JAN-92 
+
+===================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

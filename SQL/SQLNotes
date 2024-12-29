@@ -1164,6 +1164,67 @@ New Year
 
 ===================================================================================================
 
+SELECT UPPER(last_name) "Uppercase"
+   FROM employees;
+
+===================================================================================================
+
+SELECT USER, UID FROM DUAL;
+
+===================================================================================================
+
+SELECT VALUE(p) FROM persons p;
+
+VALUE(P)(NAME, SSN)
+-------------------------------------------------------------
+PERSON_T('Bob', 1234)
+EMPLOYEE_T('Joe', 32456, 12, 100000)
+PART_TIME_EMP_T('Tim', 5678, 13, 1000, 20)
+
+====================================================================================================
+
+SELECT VARIANCE(salary) "Variance"
+   FROM employees;
+
+  Variance
+----------
+15283140.5
+
+SELECT last_name, salary, VARIANCE(salary) 
+      OVER (ORDER BY hire_date) "Variance"
+   FROM employees 
+   WHERE department_id = 30
+   ORDER BY last_name, salary, "Variance"; 
+
+LAST_NAME                     SALARY   Variance
+------------------------- ---------- ----------
+Baida                           2900 16283333.3
+Colmenares                      2500   11307000
+Himuro                          2600   13317000
+Khoo                            3100   31205000
+Raphaely                       11000          0
+Tobias                          2800 21623333.3
+
+
+====================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

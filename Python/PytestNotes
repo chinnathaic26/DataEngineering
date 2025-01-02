@@ -1,1 +1,8 @@
+1. Install Pytest:
+Pip install -U pytest
+
+2. check installed version
+pytest --version
+
+3. create first test using pytest  
 

@@ -4,5 +4,81 @@ Pip install -U pytest
 2. check installed version
 pytest --version
 
-3. create first test using pytest  
+3. check available fixtures:
+pytest --fixtures
+
+4. run a module
+pytest test_module.py
+
+5. run from directory
+pytest testmoduledir/
+
+6. run by specific word search
+pytest -k '<flename specific word>'
+
+7.To run a specific test within a module
+pytest tests/test_module.py::myfirst_test
+
+8. To run a Class
+pytest tests/test_module.py::TestClass
+
+9. Specifying a specific test method:
+pytest tests/test_mod.py::TestClass::test_method
+
+10. Specifying a specific parametrization of a test:
+pytest tests/test_mod.py::test_func[x1,y2]
+
+11. To run all tests which are decorated with the @pytest.mark.slow decorator:
+pytest -m slow
+
+12. To run all tests which are decorated with the annotated @pytest.mark.slow(phase=1) decorator, with the phase
+keyword argument set to 1:
+pytest -m "slow(phase=1)"
+
+13. Run tests from packages
+pytest --pyargs pkg.testing
+
+14. All of the above can be read from a file using the @ prefix:
+pytest @tests_to_run.txt
+
+where tests_to_run.txt contains an entry per line, e.g.:
+tests/test_file.py
+tests/test_mod.py::test_func[x1,y2]
+tests/test_mod.py::TestClass
+-m slow
+
+15. pytest help
+pytest -h | --help
+
+16. To get a list of the slowest 10 test durations over 1.0s long:
+pytest --duration=10 --duration-min=1.0
+
+17. Loading of Plugins
+pytest -p mypluginmodule
+
+18. disable Plugins
+pytest -p no:doctest
+
+19. Calling pytest through other way
+python -m pytest [...]
+
+20. calling pytest from python code
+retcode = pytest.main()
+pass arguments explicitly:
+retcode = pytest.main(["-x", "mytestdir"])
+
+21. 
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -67,7 +67,12 @@ retcode = pytest.main()
 pass arguments explicitly:
 retcode = pytest.main(["-x", "mytestdir"])
 
-21. 
+21. pytest.fail(reason, pytrace=True) - explicitly fail a test.
+
+22. pytest.skip ( reason, allow_module_level=False ) 
+@pytest.mark.skip(reason="This test is permanently skipped.")
+
+23. 
 
 
 

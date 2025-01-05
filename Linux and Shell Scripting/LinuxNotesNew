@@ -1,4 +1,4 @@
-What are the basic Linux commands you use in ETL testing?
+10 What are the basic Linux commands you use in ETL testing?
 
 Examples: ls, cat, grep, awk, sed, cut, sort, uniq, wc, tail, head, find, chmod, scp.
 
@@ -157,4 +157,114 @@ awk -F ',' '{print $1, $3}' <filename>
 Perform mathematical operations on columns:
 
 awk '{sum+=$2} END {print sum}' <filename>
+
+==================================================
+Find files
+
+find . -name '*.jpg'  ===> case sensitive search
+
+find . -iname '*.jpg' ===> case insensitive search
+
+find . -name '*.jpg' -mindepth N  ===> directory N levels down
+
+-user <username>
+-group <groupname>
+-readable
+-writable
+-executable
+-perm NNNN
+-empty
+-size N
+
+find . -name '*report*' -perm 06444 -atime 10 -size +10M
+
+searching by time :
+
+-amin N , cmin N , mmin N ( accessed, changed, modified N minutes ago)
+
+-atime N , ctime N , -mtime N ( accessed, changed, modified N*24 hours ago )
+======================================================
+
+Locate command
+
+locate jpg  (case sensitive)
+
+locate -i jpg  ( case insensitive) 
+
+locate -i zip jpg  ( multiple params)
+
+locate -A .jpg.zip
+
+locate -c .jpg ( count number of files )
+
+shows executable : 
+
+which bash
+which mkfs.ext3
+type locate
+type -a locate
+
+type -t type
+whereis locate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

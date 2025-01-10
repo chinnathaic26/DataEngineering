@@ -1,0 +1,18 @@
+1. What is a Data Warehouse?
+Answer:
+A Data Warehouse is a centralized repository used to store large volumes of structured and unstructured data from multiple sources. It is designed for query and analysis rather than transaction processing.
+
+Example:
+An e-commerce platform stores data about customers, orders, and products from transactional databases in a data warehouse to analyze sales trends.
+
+
+2. How is a Data Warehouse different from a Database?
+Answer:
+
+Data Warehouse: Optimized for analytical processing (OLAP), storing historical data, and supporting decision-making.
+Database: Optimized for transactional processing (OLTP), supporting day-to-day operations.
+Example:
+
+Database: Recording a product sale in an online store.
+Data Warehouse: Analyzing the product sales over the past year to forecast demand.
+

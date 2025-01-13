@@ -1,3 +1,17 @@
+list the contents of directory : ls
+list -long form : ls -l
+file type owner group user : d rwx rwx rwx
+about directory : ls -l -d /another_directory
+viewing hidden files: ls -la
+
+filetypes: - (normal file) , d (directory) , l (symbolic link) , b (block device) , c (character device) , s ( socket)
+
+
+read - octal 4
+write - octal 2
+execute - octal 1
+
+
 10 What are the basic Linux commands you use in ETL testing?
 
 Examples: ls, cat, grep, awk, sed, cut, sort, uniq, wc, tail, head, find, chmod, scp.

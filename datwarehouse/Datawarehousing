@@ -16,3 +16,10 @@ Example:
 Database: Recording a product sale in an online store.
 Data Warehouse: Analyzing the product sales over the past year to forecast demand.
 
+3. Key characteristics of Datawarehouse:
+Subject Oriented = Organized around specific business areas (e.g., sales, finance)
+Integrated = Data is gathered and unified from various sources.
+Non-Volatile = Once data is entered, it doesn’t change, ensuring consistency.
+Time-Variant = Historical data is stored for analysis over time.
+
+4. 

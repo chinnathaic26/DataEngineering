@@ -1,0 +1,153 @@
+1. Big Data
+Definition: Extremely large datasets that traditional data processing software cannot manage effectively.
+Example: Data from social media, e-commerce transactions, and IoT devices.
+2. Volume
+Definition: The sheer amount of data generated every second.
+Example: Petabytes of data collected by Google or Facebook daily.
+3. Velocity
+Definition: The speed at which data is generated, processed, and analyzed.
+Example: Real-time data streaming from sensors or stock trading platforms.
+4. Variety
+Definition: Different types of data (structured, semi-structured, unstructured).
+Example: Text, images, videos, and numerical data.
+5. Veracity
+Definition: The uncertainty or trustworthiness of data.
+Example: Filtering out spam data from reliable datasets.
+6. Value
+Definition: Insights or benefits derived from data analysis.
+Example: Customer segmentation to improve marketing campaigns.
+7. Structured Data
+Definition: Data organized in rows and columns.
+Example: Data stored in relational databases like SQL.
+8. Unstructured Data
+Definition: Data without a predefined format.
+Example: Videos, emails, social media posts.
+9. Semi-Structured Data
+Definition: Data with a loose structure but not fully organized.
+Example: JSON, XML files.
+10. Hadoop
+Definition: An open-source framework for storing and processing big data.
+Example: Hadoop Distributed File System (HDFS) for data storage.
+11. MapReduce
+Definition: A programming model for processing large datasets by dividing tasks into smaller chunks.
+Example: Counting word frequency in a dataset.
+12. Apache Spark
+Definition: A fast, in-memory big data processing framework.
+Example: Real-time analytics using Spark Streaming.
+13. Data Lake
+Definition: A centralized repository for storing raw, unstructured data.
+Example: AWS S3 buckets used as a data lake.
+14. Data Warehouse
+Definition: A system for analyzing and reporting structured data.
+Example: Snowflake or Amazon Redshift.
+15. ETL (Extract, Transform, Load)
+Definition: The process of extracting data, transforming it for analysis, and loading it into a database.
+Example: Preparing sales data for reporting.
+16. Real-Time Processing
+Definition: Immediate processing and analysis of data as it arrives.
+Example: Fraud detection in financial transactions.
+17. Batch Processing
+Definition: Processing large amounts of data at once in batches.
+Example: Monthly payroll processing.
+18. NoSQL
+Definition: Databases designed for scalability and unstructured data.
+Example: MongoDB, Cassandra.
+19. Data Mining
+Definition: Extracting useful patterns from large datasets.
+Example: Identifying customer purchasing trends.
+20. Machine Learning
+Definition: Algorithms that enable computers to learn and make decisions from data.
+Example: Predicting customer churn using historical data.
+21. Predictive Analytics
+Definition: Using historical data to predict future outcomes.
+Example: Forecasting stock market trends.
+22. Stream Processing
+Definition: Processing data in motion for real-time analysis.
+Example: Apache Kafka for real-time data streams.
+23. Distributed Computing
+Definition: Using multiple computers to process data simultaneously.
+Example: Google’s search engine operations.
+24. Data Governance
+Definition: Policies and procedures to manage data quality, privacy, and security.
+Example: Ensuring compliance with GDPR.
+25. Data Visualization
+Definition: Representing data through graphical formats.
+Example: Dashboards created in Tableau or Power BI.
+26. Cloudera
+Definition: A software platform for big data analytics built on Apache Hadoop and other open-source technologies.
+Example: Managing and analyzing enterprise-scale data.
+27. Amazon EMR (Elastic MapReduce)
+Definition: A cloud-based big data platform for processing vast amounts of data using Hadoop, Spark, and other tools.
+Example: Running large-scale data transformations in AWS.
+28. Kafka
+Definition: A distributed streaming platform used for building real-time data pipelines.
+Example: Streaming logs from IoT devices for analytics.
+29. Flume
+Definition: A tool for collecting, aggregating, and transferring large amounts of log data.
+Example: Streaming log files from servers to HDFS.
+30. Pig
+Definition: A scripting platform that simplifies big data processing on Hadoop.
+Example: Writing scripts to transform raw data in HDFS.
+31. Hive
+Definition: A data warehouse software for querying and managing large datasets using SQL-like syntax.
+Example: Querying sales data stored in Hadoop.
+32. Presto
+Definition: A distributed SQL query engine optimized for running interactive queries on big data.
+Example: Querying data stored in a data lake or warehouse.
+33. OLAP (Online Analytical Processing)
+Definition: Tools and techniques for analyzing multi-dimensional data.
+Example: Generating financial reports using OLAP cubes.
+34. OLTP (Online Transaction Processing)
+Definition: Systems optimized for managing transactional data in real time.
+Example: Banking systems managing account transactions.
+35. Flink
+Definition: A framework for distributed stream and batch data processing.
+Example: Real-time event processing in IoT.
+36. ElasticSearch
+Definition: A search engine based on Lucene, used for searching and analyzing large volumes of data.
+Example: Full-text search for e-commerce websites.
+37. Data Mart
+Definition: A subset of a data warehouse focused on a specific business area.
+Example: A sales department data mart for performance analysis.
+38. Business Intelligence (BI)
+Definition: Technologies and practices for analyzing business data and delivering actionable insights.
+Example: Using Power BI or Tableau for dashboards.
+39. Zookeeper
+Definition: A coordination service for distributed systems.
+Example: Synchronizing distributed applications like Hadoop and Kafka.
+40. Data Sharding
+Definition: Splitting data into smaller, manageable chunks stored across multiple databases.
+Example: Partitioning a large customer database.
+41. Replication
+Definition: Creating multiple copies of data to ensure fault tolerance.
+Example: Storing replicas in HDFS for data reliability.
+42. Cassandra
+Definition: A highly scalable NoSQL database designed for large amounts of unstructured data.
+Example: Managing time-series data from IoT devices.
+43. Data Partitioning
+Definition: Dividing a large dataset into smaller segments to optimize processing.
+Example: Partitioning logs by date for faster queries.
+44. Data Cleaning
+Definition: Removing errors or inconsistencies in datasets to ensure accuracy.
+Example: Handling missing or duplicate data in a CSV file.
+45. Data Integrity
+Definition: Ensuring data is accurate, consistent, and reliable.
+Example: Validating entries in a relational database.
+46. Latency
+Definition: The time delay in processing data.
+Example: Network latency in delivering real-time analytics.
+47. Event Stream
+Definition: A continuous flow of data generated by event-driven systems.
+Example: User clicks and interactions on a website.
+48. Data Fabric
+Definition: A unified architecture for managing and integrating data across environments.
+Example: Synchronizing cloud and on-premise data systems.
+49. Graph Database
+Definition: A database optimized for storing relationships between data points.
+Example: Neo4j for analyzing social networks.
+50. Data Encryption
+Definition: Securing data by converting it into unreadable formats.
+Example: Encrypting sensitive customer data for compliance.
+40. Data Sharding
+Definition: Splitting data into smaller, manageable chunks stored across multiple databases.
+Example: Partitioning a large customer database.
